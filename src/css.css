@@ -1,0 +1,166 @@
+/* Сайт с иконками https://icons8.ru/ */
+
+
+/* Выставляем основные настройки по-умолчанию для body */
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/*  Сброс стилей */
+h1, h2, h3, h4, h5, h6, p, ul, li, a, form, input, span, button, textarea, select, label {
+	font-size: 100%;
+	padding: 0;
+	margin: 0;
+	color: black;
+	font-weight: inherit;
+	vertical-align: baseline;
+	font-size: 14px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-align: center;
+}
+
+ul, li {
+	list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
+  vertical-align: top;
+  border: none;
+  border-style: none;
+}
+
+button, textarea, select, input {
+	box-sizing: border-box;
+	border: none;
+	outline: none;
+	background-color: transparent;
+	display: inline-block;
+    box-shadow: none;
+    background: none;
+    cursor: pointer;
+    overflow: visible;
+}
+
+aside, nav, footer, header, section, main {
+	display: block;
+}
+
+label {
+	cursor: pointer;
+}
+
+legend {
+	display: block;
+}
+
+.base {
+	/*background: #141E30;*/
+	min-height: 100vh;
+	color: black;
+	scroll-behavior: smooth;
+	text-rendering: optimizeSpeed;
+	line-height: 1.5;
+	font-size: 14px;
+}
+
+.container {
+	max-width: 960px;
+	padding: 0 20px;
+	margin: 0 auto;
+}
+
+@media (max-width: 550px) {
+	.container {
+		max-width: 500px;
+		min-width: 250px;
+		padding: 0 10px;
+	}
+}
+
+.opasity1 {
+    opacity: 1;
+}
+
+
+
+
+
+/*------ POSITIAN -------------*/
+.fixed {
+	position: fixed;
+	left: 0;
+	right: 0;
+	z-index: 777;
+}
+
+/*------ FLEX -------------*/
+.flex { display: flex; }
+
+.space-between {justify-content: space-between;}
+
+.align-center {align-items: center;}
+
+/*------ SIZE --------*/
+.text-sm {font-size: 14px;}
+.text-ms {font-size: 16px;}
+.text-h1 {font-size: 20px;}
+.text-32 {font-size: 32px;
+}
+ 
+/*------ MARGIN ----------*/
+.mx-5 {margin: 0 5px;}
+.my-50 {margin: 50px 0;}
+
+/*------ PADDING -------*/
+.py-10 {padding: 10px 0;}
+.py-20 {padding: 20px 0;}
+
+/*------ EFFECTS --------*/
+.hover {transition: 0.4s;}
+.hover:hover {
+	opacity: 0.7;
+}
+
+.hover-img {
+	transition: 0.4s;
+	opacity: 0.8;
+}
+.hover-img:hover {opacity: 1}
+
+/*---- COLOR ----*/
+.red {color: red}
+.text-47ebdbe3 {color: #47ebdbe3}
+
+
+/*------ BORDER ---*/
+.h-border {border: solid #47ebdbe3 1px;}
+
+/*------ ALL ---*/
+.cursor {cursor: pointer;}
+
+
+
+/*  
+POSITIAN
+FLEX
+SIZE
+MARGIN
+PADDING
+EFFECTS
+COLOR
+BORDER
+ALL
+*/
