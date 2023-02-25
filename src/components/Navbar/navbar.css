@@ -45,6 +45,12 @@
 
 .Navbar__menu div a {
 	font-size: 20px;
+	opacity: 0.8;
+	transition: 0.4s;
+}
+
+.Navbar__menu div a:hover {
+	opacity: 1;
 }
 
 @media (max-width: 767px) {
