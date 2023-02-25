@@ -21,6 +21,10 @@ const LoginPage: React.FC = () => {
 		if(success) navigate('/')
 	}, [success])
 
+	useEffect(() => {
+		window.scrollTo(0, 0)
+	}, [])
+
 	const handleValue = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setValue(e.target.value)
 		authStatuse()
@@ -39,7 +43,7 @@ const LoginPage: React.FC = () => {
 	}
 
 	return (
-		<div>
+		<div className='LoginPage'>
 			<h3>LoginPage</h3>
 			<form
 				onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault() }

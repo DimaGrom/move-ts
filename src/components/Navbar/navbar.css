@@ -1,3 +1,166 @@
 .Navbar {
-	background: #06ced240;
+	/*background: #06ced240;*/
+	position: fixed;
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: 50;
+}
+
+.Navbar:before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #5e5373;
+	z-index: 3;
+}
+
+.Navbar__body {
+	position: relative;
+	/*z-index: 2;*/
+}
+
+.Navbar__logo {
+	flex: 0 0 40px;
+	border-radius: 50%;
+	overflow: hidden;
+	position: relative;
+	z-index: 5;
+}
+
+.Navbar__logo img {
+	display: block;
+}
+
+.Navbar__burger {
+	display: none;
+}
+
+.Navbar__menu {
+	display: flex;
+}
+
+.Navbar__menu div a {
+	font-size: 20px;
+}
+
+@media (max-width: 767px) {
+
+	.Navbar__body.py-10 {
+		padding: 5px 0;
+	}
+
+	.Navbar__logo {
+		flex: 0 0 30px;
+	}
+
+	.Navbar__burger {
+		display: block;
+		position: relative;
+		width: 30px;
+		height: 20px;
+		border: none;
+		outline: none;
+		/*position: relative;*/
+		position: absolute;
+		right: 50px;
+		z-index: 5;
+	}
+
+	.Navbar__burger:before, 
+	.Navbar__burger:after {
+		content: '';
+		background-color: #fff;
+		position: absolute;
+		width: 100%;
+		height: 2px;
+		left: 0;
+	} 
+
+	.Navbar__burger span {
+		content: '';
+		background-color: #fff;
+		position: absolute;
+		width: 100%;
+		height: 2px;
+		left: 0;
+		top: 9px;
+		transition: 0.7s;
+	}
+
+	.Navbar__burger.active span {
+		opacity: 0;
+		transform: translateX(20px);
+	}
+
+	.Navbar__burger:before {
+		top: 0;
+		transition: 0.4s;
+	}
+
+	.Navbar__burger:after {
+		bottom: 0;
+		transition: 0.4s;
+	}
+
+	.Navbar__burger.active:before {
+		transform: rotate(45deg);
+		top: 9px;
+	}
+
+	.Navbar__burger.active:after {
+		transform: rotate(-45deg);
+		bottom: 9px;
+	}
+
+	.Navbar__menu {
+		position: fixed;
+		/*top: 0;*/
+		top: -110%;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		overflow: auto;
+		background-color:  #0BA4A6;
+		align-items: baseline;
+		flex-direction: column;
+    	padding-left: 30px;
+    	padding-top: 50px;
+    	transition: 0.4s;
+	}
+
+	.Navbar__menu.active {
+		top: 0;
+	}
+
+	.Navbar__menu div a {
+		opacity: 0;
+		transition: 0.8s;
+	}
+
+	.Navbar__menu.active div a {
+		opacity: 0.8;
+	}
+
+	@media (orientation: landscape) {
+		.Navbar__menu.active div a {
+			font-size: 24px;
+		}
+	}
+
+	.Navbar__menu.active div a:hover {
+		opacity: 1;
+	}
+
+	.Navbar__menu .mx-5 {
+		margin: 0;
+	}
+
+	/*body.lock {
+		overflow: hidden;
+	}*/
+
 }
