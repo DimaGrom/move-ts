@@ -71,7 +71,7 @@ const Navbar = () => {
 							</div>
 						</div>
 
-						<div>
+						<div className='zind-5'>
 							{
 								(token)
 									? (
