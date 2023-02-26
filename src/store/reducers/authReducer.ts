@@ -13,7 +13,7 @@ const initialState: AuthUser = {
 export const authReducer = (state=initialState, action: AuthAction): AuthUser => {
 
 	switch (action.type) {
-		// Проверяем наличие пользователя при перезагруке страницы. 
+		
 		case AuthActionTypes.AUTH_ME:
 			return {
 				...state, loadig: false, error: null, name: action.paylod, success: true, token: action.paylod

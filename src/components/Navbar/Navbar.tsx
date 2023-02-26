@@ -12,10 +12,10 @@ const Navbar = () => {
 	const {token} = useTypedSelector(state => state.auth)
 	const {authLogout} = useAction()
 	const [toggle, setToggle] = useState(false)
+	const isActiveStyle = {opacity: '1'}
 
 	const handleToggle = () => {
 		setToggle(!toggle)
-		console.log(toggle)
 	}
 
 	return (
@@ -34,7 +34,7 @@ const Navbar = () => {
 
 						<div 
 							onClick={handleToggle}
-							className={`Navbar__burger${toggle ? ' active' : ''}`} 
+							className={`Navbar__burger${toggle ? ' active' : ''} cursor`} 
 						>
 							<span></span>
 						</div>
@@ -45,19 +45,28 @@ const Navbar = () => {
 							<div>
 								<NavLink 
 									onClick={() => setToggle(!toggle)}
-									className='mx-5 text-ms cursor relative zind-5 text-white' to='/'>Главная
+									className='mx-5 text-ms cursor relative zind-5 text-white' to='/'
+									style={({isActive}) => isActive ? isActiveStyle : undefined}
+								>
+									Главная
 								</NavLink>
 							</div>
 							<div className='mx-5 cursor relative zind-5 text-white'>
 								<NavLink 
 									onClick={() => setToggle(!toggle)}
-									className='mx-5 text-ms cursor relative zind-5 text-white' to='/'>Популярные
+									className='mx-5 text-ms cursor relative zind-5 text-white' to='/my_film'
+									style={({isActive}) => isActive ? isActiveStyle : undefined}
+								>
+									Мои
 								</NavLink>
 							</div>
 							<div className='mx-5 cursor relative zind-5 text-white'>
 								<NavLink 
 									onClick={() => setToggle(!toggle)}
-									className='mx-5 text-ms cursor relative zind-5 text-white' to='/'>Мои
+									className='mx-5 text-ms cursor relative zind-5 text-white' to='/popula'
+									style={({isActive}) => isActive ? isActiveStyle : undefined}
+								>
+									Популярные
 								</NavLink>
 							</div>
 						</div>

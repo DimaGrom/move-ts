@@ -12,7 +12,6 @@ export const authCreateLocalforage = async (name: string) => {
 
 export const authUserLocalforage = async () => {
 	const request = await localforage.getItem('auth')
-	console.log('authUser request ', request)
 	if(request === null) return false
 	if(request !== null) return request
 }

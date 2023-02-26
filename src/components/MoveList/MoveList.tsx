@@ -8,8 +8,6 @@ interface IMoveListProps {
 const MoveList: React.FC<IMoveListProps> = (props) => {
 	const {move} = props
 
-	console.log('MoveList movies ', move)
-
 	return (
 		<div>
 			{
