@@ -8,12 +8,14 @@ interface IProps {
 }
 
 const Pagination:React.FC<IProps>  = (props) => {
-	const {setPageNumber} = props
+	const {setPageNumber, usersPages} = props
 	const [indexNow, setIndexNow] = useState<number>(1)
 	const [nextBoolean, SetNextBoolean] = useState<boolean>(true)
+	const [activeNav, setActiveNav] = useState<boolean>(false)
 
-	const usersPages = 100
+	console.log("usersPages ", usersPages)
 
+	// usersPages = 10
 	const pages = []
 
 	useEffect(() => {
@@ -43,52 +45,81 @@ const Pagination:React.FC<IProps>  = (props) => {
 		}
 	}
 
+	const handleActiveNav = () => {
+		setActiveNav(true)
+	}
+
+	const handleNotActiveNav = () => {
+		setActiveNav(false)
+	}
+
+	const handleSwitchNav = (ind: number) => {
+		console.log('handleSwitchNav ', ind)
+		handleChangeIndexNow(ind)
+		setActiveNav(false)
+	}
+
+	const pagesNav = []
+	for(let i = 0; i < usersPages; i++ ) {
+		pagesNav[i] = i + 1
+	}
+
+	console.log('pagesNav ', pagesNav)
+
 	if(usersPages <= 10) {
 		for(let i = 0; i < usersPages; i++ ) {
 			pages[i] = i + 1
 		}
 		return (
 			<div className='Pagination'>
-				<h3>Pagination</h3>
-				<div
-					style={{
-						display: 'flex'
-					}}
-				>
+				<div className='flex'>
 					<div
+						className='Pagination__next'
 						onClick={handleChangeIndexNext}
-						style={{
-							margin: '0 5px',
-							padding: '4px 8px',
-							border: 'solid green 1px',
-							cursor: 'pointer'
-						}}
 					>Next</div>
 					{
 						pages.length > 0 && pages.map((m, indx) => 
 							<div 
 								onClick={() => handleChangeIndexNow(m)}
 								key={indx}
-								className={`${indexNow === m ? 'active' : ''}`}
-								style={{
-									margin: '0 5px',
-									padding: '4px 8px',
-									border: 'solid green 1px',
-									cursor: 'pointer'
-								}}
+								className={`Pagination__item ${indexNow === m ? 'active' : ''}`}
 							>{m}</div>
 						)
 					}
 					<div
 						onClick={handleChangeIndexPrev}
-						style={{
-							margin: '0 5px',
-							padding: '4px 8px',
-							border: 'solid green 1px',
-							cursor: 'pointer'
-						}}
+						className='Pagination__prev'
 					>Prev</div>
-
+					<div
+						onClick={handleActiveNav}
+						className='Pagination__nav'
+					>Nev</div>
+					{
+						activeNav && (
+							<div
+								className='Pagination__NavMax'
+							>
+								<div className='Pagination__NavMax-wrapper'>
+									<p onClick={handleNotActiveNav}>X</p>
+									<div
+										className='Pagination__NavMax-list'
+									>
+										{
+											pagesNav.map((m, indx) => 
+												<div
+													onClick={() => {handleSwitchNav(m)}}
+													key={indx}
+													className={`${indexNow === m ? 'active' : ''}`}
+												>
+													{m}
+												</div>
+											)
+										}
+									</div>	
+								</div>
+							</div>
+						)
+					}
 				</div>
 			</div>
 		)
@@ -114,21 +145,10 @@ const Pagination:React.FC<IProps>  = (props) => {
 	
 	return (
 		<div className='Pagination'>
-			<h3>Pagination</h3>
-			<div
-				style={{
-					display: 'flex',
-					width: '200px'
-				}}
-			>
+			<div className='flex'>
 				<div
 					onClick={handleChangeIndexNext}
-					style={{
-						margin: '0 5px',
-						padding: '4px 8px',
-						border: 'solid green 1px',
-						cursor: 'pointer'
-					}}
+					className='Pagination__next'
 				>Next</div>
 				{
 					(pages.length === 6 && nextBoolean) && (
@@ -142,13 +162,7 @@ const Pagination:React.FC<IProps>  = (props) => {
 									<div 
 										onClick={() => handleChangeIndexNow(m)}
 										key={indx}
-										className={`${indexNow === m ? 'active' : ''}`}
-										style={{
-											margin: '0 5px',
-											padding: '4px 8px',
-											border: 'solid green 1px',
-											cursor: 'pointer'
-										}}
+										className={`Pagination__item ${indexNow === m ? 'active' : ''}`}
 									>{m}</div>
 								)
 							}
@@ -169,13 +183,7 @@ const Pagination:React.FC<IProps>  = (props) => {
 										<div 
 											onClick={() => handleChangeIndexNow(m)}
 											key={indx}
-											className={`${indexNow === m ? 'active' : ''}`}
-											style={{
-												margin: '0 5px',
-												padding: '4px 8px',
-												border: 'solid green 1px',
-												cursor: 'pointer'
-											}}
+											className={`Pagination__item ${indexNow === m ? 'active' : ''}`}
 										>{m}</div>
 									)
 								}
@@ -196,13 +204,7 @@ const Pagination:React.FC<IProps>  = (props) => {
 										<div 
 											onClick={() => handleChangeIndexNow(m)}
 											key={indx}
-											className={`${indexNow === m ? 'active' : ''}`}
-											style={{
-												margin: '0 5px',
-												padding: '4px 8px',
-												border: 'solid green 1px',
-												cursor: 'pointer'
-											}}
+											className={`Pagination__item ${indexNow === m ? 'active' : ''}`}
 										>{m}</div>
 									)
 								}
@@ -211,13 +213,38 @@ const Pagination:React.FC<IProps>  = (props) => {
 				}
 				<div
 					onClick={handleChangeIndexPrev}
-					style={{
-						margin: '0 5px',
-						padding: '4px 8px',
-						border: 'solid green 1px',
-						cursor: 'pointer'
-					}}
+					className='Pagination__prev'
 				>Prev</div>
+				<div
+						onClick={handleActiveNav}
+					className='Pagination__nav'
+				>Nev</div>
+				{
+					activeNav && (
+						<div
+							className='Pagination__NavMax'
+						>
+							<div className='Pagination__NavMax-wrapper'>
+								<p onClick={handleNotActiveNav}>X</p>
+								<div
+									className='Pagination__NavMax-list'
+								>
+									{
+										pagesNav.map((m, indx) => 
+											<div
+												onClick={() => {handleSwitchNav(m)}}
+												key={indx}
+												className={`${indexNow === m ? 'active' : ''}`}
+											>
+												{m}
+											</div>
+										)
+									}
+								</div>	
+							</div>
+						</div>
+					)
+				}
 			</div>
 		</div>
 	)
