@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/move-ts/static/css/main.27b04c32.chunk.css",
-    "main.js": "/move-ts/static/js/main.8d2360a2.chunk.js",
-    "main.js.map": "/move-ts/static/js/main.8d2360a2.chunk.js.map",
+    "main.css": "/move-ts/static/css/main.e7f6d5f5.chunk.css",
+    "main.js": "/move-ts/static/js/main.867c962f.chunk.js",
+    "main.js.map": "/move-ts/static/js/main.867c962f.chunk.js.map",
     "runtime-main.js": "/move-ts/static/js/runtime-main.7743674f.js",
     "runtime-main.js.map": "/move-ts/static/js/runtime-main.7743674f.js.map",
-    "static/js/2.5ea0cb13.chunk.js": "/move-ts/static/js/2.5ea0cb13.chunk.js",
-    "static/js/2.5ea0cb13.chunk.js.map": "/move-ts/static/js/2.5ea0cb13.chunk.js.map",
+    "static/js/2.7fc0c1ad.chunk.js": "/move-ts/static/js/2.7fc0c1ad.chunk.js",
+    "static/js/2.7fc0c1ad.chunk.js.map": "/move-ts/static/js/2.7fc0c1ad.chunk.js.map",
     "index.html": "/move-ts/index.html",
-    "static/css/main.27b04c32.chunk.css.map": "/move-ts/static/css/main.27b04c32.chunk.css.map",
-    "static/js/2.5ea0cb13.chunk.js.LICENSE.txt": "/move-ts/static/js/2.5ea0cb13.chunk.js.LICENSE.txt",
+    "static/css/main.e7f6d5f5.chunk.css.map": "/move-ts/static/css/main.e7f6d5f5.chunk.css.map",
+    "static/js/2.7fc0c1ad.chunk.js.LICENSE.txt": "/move-ts/static/js/2.7fc0c1ad.chunk.js.LICENSE.txt",
     "static/media/1917.7e5427cb.jpg": "/move-ts/static/media/1917.7e5427cb.jpg",
     "static/media/angryBirds.fbc3c7a4.png": "/move-ts/static/media/angryBirds.fbc3c7a4.png",
     "static/media/angryBirds2.b87a7eb6.jpg": "/move-ts/static/media/angryBirds2.b87a7eb6.jpg",
@@ -22,8 +22,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.7743674f.js",
-    "static/js/2.5ea0cb13.chunk.js",
-    "static/css/main.27b04c32.chunk.css",
-    "static/js/main.8d2360a2.chunk.js"
+    "static/js/2.7fc0c1ad.chunk.js",
+    "static/css/main.e7f6d5f5.chunk.css",
+    "static/js/main.867c962f.chunk.js"
   ]
 }
