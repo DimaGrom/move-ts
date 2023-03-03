@@ -63,7 +63,7 @@ const Navbar = () => {
 							<div className='mx-5 cursor relative zind-5 text-white'>
 								<NavLink 
 									onClick={() => setToggle(!toggle)}
-									className='mx-5 text-ms cursor relative zind-5 text-white' to='/popula'
+									className='mx-5 text-ms cursor relative zind-5 text-white' to='/popular'
 									style={({isActive}) => isActive ? isActiveStyle : undefined}
 								>
 									Популярные

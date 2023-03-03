@@ -1,0 +1,4 @@
+.Pagination .active {
+	border: solid red 1px;
+	background: red;
+}
