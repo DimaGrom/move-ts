@@ -27,7 +27,6 @@ const App: React.FC = () => {
 	// Property 'slice' does not exist on type '{}'.
 
 
-
 	useEffect(() => {
 		authMe()
 	}, [token])

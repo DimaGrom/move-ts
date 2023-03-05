@@ -11,10 +11,6 @@ const LoginPage: React.FC = () => {
 	const {authLogin, authStatuse} = useAction()
 	const {loadig, id, name, success, status} = useTypedSelector(state => state.auth)
 
-	// useEffect(() => {
-	// 	localforage.removeItem('users')
-	// }, [])
-
 	useEffect(() => {
 		if(success) navigate('/')
 	}, [success])

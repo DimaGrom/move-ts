@@ -1,0 +1,7 @@
+.MoveList {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+
+	/*border: solid red 1px;*/
+}

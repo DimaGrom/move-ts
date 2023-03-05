@@ -3,19 +3,16 @@ import '../../css.css'
 import './pagination.css'
 
 interface IProps {
-	usersPages: number;
-	setPageNumber: (a: number) => any; 
+	amountPages: number;
+	changeNumberPage: (a: number) => any; 
 }
 
 const Pagination:React.FC<IProps>  = (props) => {
-	const {setPageNumber, usersPages} = props
+	const {changeNumberPage, amountPages} = props
 	const [indexNow, setIndexNow] = useState<number>(1)
 	const [nextBoolean, SetNextBoolean] = useState<boolean>(true)
 	const [activeNav, setActiveNav] = useState<boolean>(false)
 
-	console.log("usersPages ", usersPages)
-
-	// usersPages = 10
 	const pages = []
 
 	useEffect(() => {
@@ -28,20 +25,20 @@ const Pagination:React.FC<IProps>  = (props) => {
 
 	const handleChangeIndexNow = (indx: number) => {
 		setIndexNow(indx)
-		setPageNumber(indx-1)
+		changeNumberPage(indx-1)
 	}
 
 	const handleChangeIndexNext = () => {
-		if(indexNow < usersPages) {
+		if(indexNow < amountPages) {
 			setIndexNow(indexNow + 1)
-			setPageNumber(indexNow)
+			changeNumberPage(indexNow)
 		}		
 	}
 
 	const handleChangeIndexPrev = () => {
 		if(indexNow > 1) {
 			setIndexNow(indexNow - 1)
-			setPageNumber(indexNow - 2)
+			changeNumberPage(indexNow - 2)
 		}
 	}
 
@@ -60,14 +57,12 @@ const Pagination:React.FC<IProps>  = (props) => {
 	}
 
 	const pagesNav = []
-	for(let i = 0; i < usersPages; i++ ) {
+	for(let i = 0; i < amountPages; i++ ) {
 		pagesNav[i] = i + 1
 	}
 
-	console.log('pagesNav ', pagesNav)
-
-	if(usersPages <= 10) {
-		for(let i = 0; i < usersPages; i++ ) {
+	if(amountPages <= 10) {
+		for(let i = 0; i < amountPages; i++ ) {
 			pages[i] = i + 1
 		}
 		return (
@@ -90,36 +85,6 @@ const Pagination:React.FC<IProps>  = (props) => {
 						onClick={handleChangeIndexPrev}
 						className='Pagination__prev'
 					>Prev</div>
-					<div
-						onClick={handleActiveNav}
-						className='Pagination__nav'
-					>Nev</div>
-					{
-						activeNav && (
-							<div
-								className='Pagination__NavMax'
-							>
-								<div className='Pagination__NavMax-wrapper'>
-									<p onClick={handleNotActiveNav}>X</p>
-									<div
-										className='Pagination__NavMax-list'
-									>
-										{
-											pagesNav.map((m, indx) => 
-												<div
-													onClick={() => {handleSwitchNav(m)}}
-													key={indx}
-													className={`${indexNow === m ? 'active' : ''}`}
-												>
-													{m}
-												</div>
-											)
-										}
-									</div>	
-								</div>
-							</div>
-						)
-					}
 				</div>
 			</div>
 		)
@@ -131,15 +96,15 @@ const Pagination:React.FC<IProps>  = (props) => {
 		}
 	}
 
-	if(indexNow > 4 && indexNow < usersPages - 2) {
+	if(indexNow > 4 && indexNow < amountPages - 2) {
 		for(let i = 0; i < 5; i++ ) {
 			pages[i] = indexNow - 2 + i
 		}
 	}
 
-	if(indexNow === usersPages || indexNow === usersPages - 1 || indexNow === usersPages - 2 || indexNow === usersPages - 2) {
+	if(indexNow === amountPages || indexNow === amountPages - 1 || indexNow === amountPages - 2 || indexNow === amountPages - 2) {
 		for(let i = 0; i < 6; i++ ) {
-			pages[i] = usersPages - 5 + i
+			pages[i] = amountPages - 5 + i
 		}
 	}
 	

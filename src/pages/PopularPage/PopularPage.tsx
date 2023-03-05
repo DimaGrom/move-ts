@@ -12,9 +12,9 @@ password?: string;
 [index: number]: any
 } 
 
-interface Itemp {
-  [index: number]: IUser;
-}
+// interface Itemp {
+//   [index: number]: IUser;
+// }
 
 const PopularPage:React.FC = () => {
 	// @ts-ignore
@@ -45,14 +45,14 @@ const PopularPage:React.FC = () => {
 	})
 
 	// @ts-ignore
-	const usersPages = Math.ceil(JsonData.length / usersPerPage)
+	const amountPages = Math.ceil(JsonData.length / usersPerPage)
 
 	return (
 		<div>
 
 			<Pagination 
-				usersPages={usersPages}
-				setPageNumber={setPageNumber}
+				amountPages={amountPages}
+				changeNumberPage={setPageNumber}
 			/>
 
 			{displayUsers}
