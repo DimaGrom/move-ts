@@ -12,7 +12,23 @@ export const moveLoading = (params: any[]) => {
 					type: MoveActionTypes.MOVE_SUCCESS,
 					payload: params
 				})
-			}, 1000)
+			}, 500)
+		} catch(e) {
+			dispatch({
+				type: MoveActionTypes.MOVE_ERROR,
+				payload: 'Ошибка загрузки...'
+			})
+		}
+	}
+}
+
+export const moveById = (params: number) => {
+	return async (dispatch: Dispatch<MoveAction>) => {
+		try {
+			dispatch({
+				type: MoveActionTypes.MOVE_BY_ID,
+				payload: params
+			})
 		} catch(e) {
 			dispatch({
 				type: MoveActionTypes.MOVE_ERROR,

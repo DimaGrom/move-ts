@@ -1,0 +1,35 @@
+.MovePage {}
+.MovePage {}
+.MovePage {}
+
+.MovePage__img {
+	width: 80%;
+}
+
+@media (max-width: 767px) {
+	.MovePage__img {
+		width: 100%;
+	}
+}
+
+.MovePage__img img {
+	width: 100%;
+	object-fit: cover;
+}
+
+.MovePage__content p {
+	width: 80%;
+	margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    line-height: 20px;
+    margin: 0 0 10px;
+    font-family: Flash,"Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+@media (max-width: 767px) {
+	.MovePage__content p {
+		width: 100%;
+	}
+}

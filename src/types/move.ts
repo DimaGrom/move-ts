@@ -21,6 +21,7 @@ interface IMove {
 
 export interface IMoveState {
 	movies: IMove[] | any[];
+	move: IMove | null;
 	loadig: boolean;
 	error: string | null;
 	success: boolean;
@@ -31,6 +32,7 @@ export enum MoveActionTypes {
 	MOVE = 'MOVE',
 	MOVE_SUCCESS = 'MOVE_SUCCESS',
 	MOVE_ERROR = 'MOVE_ERROR',
+	MOVE_BY_ID = 'MOVE_BY_ID',
 }
 
 interface MoveStartAction {
@@ -47,8 +49,14 @@ interface MoveErrorAction {
 	payload: string;
 }
 
+interface MoveByIdAction {
+	type: MoveActionTypes.MOVE_BY_ID;
+	payload: number;
+}
+
 export type MoveAction = 
 	MoveStartAction |
 	MoveSuccessAction |
-	MoveErrorAction 
+	MoveErrorAction |
+	MoveByIdAction
 

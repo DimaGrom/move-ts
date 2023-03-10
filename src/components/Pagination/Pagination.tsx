@@ -5,10 +5,11 @@ import './pagination.css'
 interface IProps {
 	amountPages: number;
 	changeNumberPage: (a: number) => any; 
+	color?: string | '';
 }
 
 const Pagination:React.FC<IProps>  = (props) => {
-	const {changeNumberPage, amountPages} = props
+	const {changeNumberPage, amountPages, color} = props
 	const [indexNow, setIndexNow] = useState<number>(1)
 	const [nextBoolean, SetNextBoolean] = useState<boolean>(true)
 	const [activeNav, setActiveNav] = useState<boolean>(false)

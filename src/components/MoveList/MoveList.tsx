@@ -11,6 +11,7 @@ const MoveList: React.FC = () => {
 	const {moveLoading} = useAction()
 	const {movies, loadig, movePages} = useTypedSelector(state => state.movies)
 	const [numberPage, setNumberPage] = useState<number>(0)
+	
 
 	useEffect(() => {
 		moveLoading(FilmiesStorage)
@@ -37,6 +38,7 @@ const MoveList: React.FC = () => {
 			<Pagination 
 				amountPages={moveAmountPages}
 				changeNumberPage={setNumberPage}
+				color={'green'}
 			/>
 		</div>
 	)

@@ -5,7 +5,7 @@ import localforage from 'localforage'
 
 const MainPage: React.FC = () => {
 
-	const sizeScreen = window.innerWidth
+
 	// useEffect(() => {
 	// 	localforage.removeItem('users')
 	// }, [])

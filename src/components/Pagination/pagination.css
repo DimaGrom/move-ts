@@ -14,11 +14,22 @@
 	padding: 4px 5px;
 	/*border: solid green 1px;*/
 	cursor: pointer;
+
+	/*margin: 5px;*/
+	padding: 3px;
+    background: white;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
 .Pagination__item.active {
 	/*border: solid red 1px;*/
-	background: red;
+	background: #FF6600;
 	border-radius: 50%;
 	color: white;
 }
