@@ -7,6 +7,7 @@ const uniqid = require("uniqid")
 interface INewUser {
 	id: number;
 	name: string;
+	likeMoves: number[];
 }
 
 // Проверяем пользователя на наличие в базе данных и если его нет добавляем в базу данных. 
@@ -27,6 +28,7 @@ export const authRegister = (name: string) => {
 				const newUser = <INewUser>{}
 				newUser.id = uniqid()
 				newUser.name = name
+				newUser.likeMoves = []
 				await createNewUser(newUser)
 				setTimeout(() => {
 					dispatch({
@@ -83,16 +85,12 @@ export const authLogin = (name: string) => {
 export const authMe = () => {
 	return async (dispatch: Dispatch<AuthAction>) => {
 		const user = await authUserLocalforage()
+		// console.log('export const authMe user', user)
 		try {
 			if(user) {
 				dispatch({
 					type: AuthActionTypes.AUTH_ME,
 					paylod: user
-				})
-			}	else {
-				dispatch({
-					type: AuthActionTypes.AUTH_ERROR,
-					paylod: 'Пользователя не существует'
 				})
 			}	
 		} catch (e) {

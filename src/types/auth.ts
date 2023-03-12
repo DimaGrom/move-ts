@@ -1,6 +1,7 @@
 export interface AuthUser {
 	id: string | null;
 	name: string;
+	likeMoves: [];
 	loadig: boolean;
 	error: null | string;
 	status: null | number;

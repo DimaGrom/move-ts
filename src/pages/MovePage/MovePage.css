@@ -33,3 +33,12 @@
 		width: 100%;
 	}
 }
+
+.MovePage__add, .MovePage__delete {
+	cursor: pointer;
+	background: #5E5373;
+	display: inline-block;
+	padding: 4px 12px;
+	border-radius: 5px;
+	color: white;
+}

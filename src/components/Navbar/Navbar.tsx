@@ -51,19 +51,25 @@ const Navbar = () => {
 									Главная
 								</NavLink>
 							</div>
+							{
+								token && (
+									<div className='mx-5 cursor relative zind-5 text-white'>
+										<NavLink 
+											onClick={() => setToggle(!toggle)}
+											className='mx-5 text-ms cursor relative zind-5 text-white' 
+											to='/my_film'
+											style={({isActive}) => isActive ? isActiveStyle : undefined}
+										>
+											Мои
+										</NavLink>
+									</div>
+								)
+							}			
 							<div className='mx-5 cursor relative zind-5 text-white'>
 								<NavLink 
 									onClick={() => setToggle(!toggle)}
-									className='mx-5 text-ms cursor relative zind-5 text-white' to='/my_film'
-									style={({isActive}) => isActive ? isActiveStyle : undefined}
-								>
-									Мои
-								</NavLink>
-							</div>
-							<div className='mx-5 cursor relative zind-5 text-white'>
-								<NavLink 
-									onClick={() => setToggle(!toggle)}
-									className='mx-5 text-ms cursor relative zind-5 text-white' to='/popular'
+									className='mx-5 text-ms cursor relative zind-5 text-white' 
+									to='/popular'
 									style={({isActive}) => isActive ? isActiveStyle : undefined}
 								>
 									Популярные
@@ -84,11 +90,13 @@ const Navbar = () => {
 											/>
 										</button>
 									) : (
-										<NavLink className='text-ms relative zind-5' to='/login'>
+										<NavLink 
+											className='text-ms relative zind-5' 
+											to='/login'>
 											<img 
-												alt='Картинка'
-												src={loginImg}
-												className='cursor cursor hover-img'
+											alt='Картинка'
+											src={loginImg}
+											className='cursor cursor hover-img'
 											/>
 										</NavLink>
 									)

@@ -26,7 +26,6 @@ interface IProps {
 	move: ArrayProps;
 }
 
-
 const MoveItem: React.FC<IProps> = (props) => {
 	const {title, src, descriptions, like, id, comments} = props.move
 	const navigate = useNavigate()

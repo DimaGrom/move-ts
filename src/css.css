@@ -182,6 +182,10 @@ legend {
   padding-bottom: 4px;
 }
 
+.heart {
+	cursor: pointer;
+}
+
 
 /*  
 POSITIAN

@@ -3,6 +3,7 @@ import {AuthActionTypes, AuthAction, AuthUser} from '../../types/auth'
 const initialState: AuthUser = {
 	id: null,
 	name: '',
+	likeMoves: [],
 	loadig: false,
 	error: null,
 	status: null,
@@ -59,7 +60,6 @@ export const authReducer = (state=initialState, action: AuthAction): AuthUser =>
 				...state, loadig: false, token: null, success: false,
 			}
 
-			
 		default:
 			return state
 	}

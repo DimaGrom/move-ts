@@ -3,6 +3,8 @@ import {IMoveState, MoveActionTypes, MoveAction} from '../../types/move'
 const initialState:IMoveState = {
 	movies: [],
 	move: null,
+	myMovies : [],
+	checkMyMovies: false,
 	loadig: false,
 	error: null,
 	success: false,
@@ -31,6 +33,26 @@ export const moveReducer = (state=initialState, action:MoveAction): IMoveState =
 			return {
 				...state, loadig: false, error: null, move: state.movies.filter(f => f.id === action.payload)[0]
 			}
+
+		case MoveActionTypes.MY_MOVE_ADD:
+		return {
+			...state, loadig: false, error: null, myMovies: action.payload
+		}
+
+		case MoveActionTypes.MY_MOVE_DELETE:
+		return {
+			...state, loadig: false, error: null, myMovies: action.payload
+		}
+
+		case MoveActionTypes.MY_MOVE:
+		return {
+			...state, loadig: false, error: null, myMovies: action.payload
+		}
+
+		case MoveActionTypes.MY_MOVE_CHECK:
+		return {
+			...state, checkMyMovies: action.payload
+		}
 
 		default:
 			return state

@@ -21,3 +21,4 @@ export const createNewUser = async (params: any) => {
 		await localforage.setItem('users', [params])
 	}
 }
+
