@@ -24,6 +24,11 @@ const Pagination:React.FC<IProps>  = (props) => {
 		}
 	}, [indexNow])
 
+	// Скрываем панель страниц
+	if(amountPages === 1) {
+		return <></>
+	}
+
 	const handleChangeIndexNow = (indx: number) => {
 		setIndexNow(indx)
 		changeNumberPage(indx-1)

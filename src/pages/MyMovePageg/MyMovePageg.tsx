@@ -23,7 +23,7 @@ const MyMovePageg:React.FC = () => {
 		movePages, 
 		myMoveFilms
 	} = useTypedSelector(state => state.movies)
-	
+
 	const [numberPage, setNumberPage] = useState<number>(0)
 
 	useEffect(() => {
@@ -60,7 +60,6 @@ const MyMovePageg:React.FC = () => {
 			<Pagination 
 				amountPages={moveAmountPages}
 				changeNumberPage={setNumberPage}
-				color={'green'}
 			/>
 		</div>
 	)

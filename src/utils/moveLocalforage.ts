@@ -5,32 +5,30 @@ export const myMoveArraAdd = async (id: number, token: string) => {
 	const oldMoveArray: any = await localforage.getItem('users')
 	// console.log('oldMoveArray', oldMoveArray)
 
-		if(token) {
-			const newMoveArray = await oldMoveArray.filter((f: any)=> f.name !== token)
-		// console.log('newMoveArray', newMoveArray)
+	const newMoveArray = await oldMoveArray.filter((f: any)=> f.name !== token)
+	// console.log('newMoveArray', newMoveArray)
 
-		const auth = await oldMoveArray.find((f:any) => f.name === token)
-		// console.log('auth', auth)
+	const auth = await oldMoveArray.find((f:any) => f.name === token)
+	// console.log('auth', auth)
 
-		// Добавляем id фильма из массив избранных фильмов пользователя
-		const check = auth.likeMoves.includes(id)
-		if(check) {
-			await localforage.setItem('users', oldMoveArray)
-			console.log('АЙДИ СУЩЕСТВУЕТ')
-			return auth.likeMoves
-		}
+	// Добавляем id фильма из массив избранных фильмов пользователя
+	const check = auth.likeMoves.includes(id)
+	if(check) {
+		await localforage.setItem('users', oldMoveArray)
+		console.log('АЙДИ СУЩЕСТВУЕТ')
+		return auth.likeMoves
+	}
 
-		auth.likeMoves = [...auth.likeMoves, id]
+	auth.likeMoves = [...auth.likeMoves, id]
 
-		await localforage.setItem('users', [...newMoveArray, auth])
+	await localforage.setItem('users', [...newMoveArray, auth])
 
-		// Получаем новый список пользователей
-		const request: any = await localforage.getItem('users')
+	// Получаем новый список пользователей
+	const request: any = await localforage.getItem('users')
 
-		const response = await request.find((f:any) => f.name === token)
+	const response = await request.find((f:any) => f.name === token)
 
-		return response.likeMoves
-		}
+	return response.likeMoves
 } 
 
 export const myMoveArraDellete= async (id: number, token: string) => {
