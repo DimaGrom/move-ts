@@ -31,7 +31,7 @@ const MovePage:React.FC = () => {
 	useEffect(() => {
 		moveLoading(FilmiesStorage)
 	}, [])
-	
+
 	useEffect(() => {
 		moveById(Number(params.id))
 		if(token) {

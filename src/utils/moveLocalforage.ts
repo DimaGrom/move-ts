@@ -60,7 +60,7 @@ export const myMoviesLF = async (id: number, token: string) => {
 	}		
 }
 
-// Получаем массив фильмов фаворитов
+// Получаем массив из id фильмов фаворитов
 export const myMoviesCheckLF = async (id: number, token: string) => {
 	const request: any = await localforage.getItem('users')
 
@@ -71,4 +71,14 @@ export const myMoviesCheckLF = async (id: number, token: string) => {
 	}
 }
 	
-		
+// 	Получаем массив избранных фильмо
+export const myMoveFilmsLF = async (moves: any[], token: string) => {
+
+	const users: any = await localforage.getItem('users')
+
+	const user = await users.find((f:any) => f.name === token)
+
+	const myMoveFilms: any = moves.filter((f: any) => user.likeMoves.includes(f.id) )
+
+	return myMoveFilms
+}	

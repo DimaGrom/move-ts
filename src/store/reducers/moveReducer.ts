@@ -4,6 +4,7 @@ const initialState:IMoveState = {
 	movies: [],
 	move: null,
 	myMovies : [],
+	myMoveFilms: [],
 	checkMyMovies: false,
 	loadig: false,
 	error: null,
@@ -52,6 +53,11 @@ export const moveReducer = (state=initialState, action:MoveAction): IMoveState =
 		case MoveActionTypes.MY_MOVE_CHECK:
 		return {
 			...state, checkMyMovies: action.payload
+		}
+		// Заполняем массив избранными страницами
+		case MoveActionTypes.MY_MOVE_FILMS:
+		return {
+			...state, myMoveFilms: action.payload
 		}
 
 		default:

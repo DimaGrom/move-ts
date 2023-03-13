@@ -19,7 +19,7 @@ interface ArrayProps {
 	like?: number
 	src?: string;
 	title?: string;
-	comments: IComments[] | any[];
+	comments?: IComments[] | any[];
 }
 
 interface IProps {

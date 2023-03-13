@@ -4,7 +4,8 @@ import {
 	myMoveArraAdd, 
 	myMoveArraDellete, 
 	myMoviesLF,
-	myMoviesCheckLF
+	myMoviesCheckLF,
+	myMoveFilmsLF
 } from '../../utils/moveLocalforage'
 
 import {} from '../../utils/userLocalforage'
@@ -84,7 +85,6 @@ export const myMoveDeleteCA = (params: number, token: string) => {
 
 export const myMoveCA = (params: number, token: string) => {
 	return async (dispatch: Dispatch<MoveAction>) => {
-
 		const myMovies = await myMoviesLF(params, token)
 
 		dispatch({
@@ -96,14 +96,22 @@ export const myMoveCA = (params: number, token: string) => {
 
 export const myMoveCheckCA = (params: number, token: string) => {
 	return async (dispatch: Dispatch<MoveAction>) => {
-
 		const check = await myMoviesCheckLF(params, token)
-
-		// console.log('myMoveCheckCA params ', params)
 
 		dispatch({
 			type: MoveActionTypes.MY_MOVE_CHECK,
 			payload: check
+		})
+	}
+}
+
+export const myMoveFilmsAC = (move: any[], token: string) => {
+	return async (dispatch: Dispatch<MoveAction>) => {
+		const myMoveFilms = await myMoveFilmsLF(move, token)
+
+		dispatch({
+			type: MoveActionTypes.MY_MOVE_FILMS,
+			payload: myMoveFilms
 		})
 	}
 }

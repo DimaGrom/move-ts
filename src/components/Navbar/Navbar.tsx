@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import '../../css.css'
 import './navbar.css'
-import {NavLink} from 'react-router-dom'
+import {NavLink, useNavigate} from 'react-router-dom'
 import loginImg from '../../icons/signin.png'
 import logout from '../../icons/logout.png'
 import cornimg from '../../icons/corn.png'
@@ -9,10 +9,17 @@ import {useTypedSelector} from '../../hooks/useTypedSelector'
 import {useAction} from '../../hooks/useActions'
 
 const Navbar = () => {
+	const navigate = useNavigate()
 	const {token} = useTypedSelector(state => state.auth)
 	const {authLogout} = useAction()
 	const [toggle, setToggle] = useState(false)
 	const isActiveStyle = {opacity: '1'}
+
+	const handleLogOut = () => {
+		setToggle(false)
+		authLogout()
+		navigate('/')
+	}
 
 	const handleToggle = () => {
 		setToggle(!toggle)
@@ -83,7 +90,7 @@ const Navbar = () => {
 									? (
 										<button className='text-ms'>
 											<img 
-												onClick={authLogout}
+												onClick={handleLogOut}
 												alt='Картинка'
 												src={logout}
 												className='cursor cursor hover-img'
@@ -91,6 +98,7 @@ const Navbar = () => {
 										</button>
 									) : (
 										<NavLink 
+											onClick={() => setToggle(false)}
 											className='text-ms relative zind-5' 
 											to='/login'>
 											<img 

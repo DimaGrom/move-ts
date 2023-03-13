@@ -23,6 +23,7 @@ export interface IMoveState {
 	movies: IMove[] | any[];
 	move: IMove | null;
 	myMovies: number[]; 
+	myMoveFilms: IMove[];
 	checkMyMovies: boolean;
 	loadig: boolean;
 	error: string | null;
@@ -39,6 +40,7 @@ export enum MoveActionTypes {
 	MY_MOVE_DELETE = 'MY_MOVE_DELETE',
 	MY_MOVE = 'MY_MOVE',
 	MY_MOVE_CHECK = 'MY_MOVE_CHECK',
+	MY_MOVE_FILMS = 'MY_MOVE_FILMS',
 }
 
 interface MoveStartAction {
@@ -80,6 +82,11 @@ interface MyMoveCheckAction {
 	payload: boolean;
 }
 
+interface MyMoveFilmsAction {
+	type: MoveActionTypes.MY_MOVE_FILMS;
+	payload: IMove[];
+}
+
 export type MoveAction = 
 	MoveStartAction |
 	MoveSuccessAction |
@@ -88,4 +95,5 @@ export type MoveAction =
 	MyMoveAddAction |
 	MyMoveDeleteAction |
 	MyMoveAction |
-	MyMoveCheckAction
+	MyMoveCheckAction |
+	MyMoveFilmsAction
