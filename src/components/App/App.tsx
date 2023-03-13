@@ -29,6 +29,9 @@ const App: React.FC = () => {
 		console.log('App: React.FC  users ', users)
 	})
 
+	const handleDeletUsers = () => {
+		localforage.removeItem('users')
+	}
 
 	// useEffect(() => {
 	// 	localforage.removeItem('auth')
@@ -64,7 +67,10 @@ const App: React.FC = () => {
 			</Layout>
 
 
-			
+			<button 
+				onClick={handleDeletUsers}
+				style={{color: 'black', fontSize: 42}}
+			>Удалить всех пользователей</button>
 
 
 		</div>
