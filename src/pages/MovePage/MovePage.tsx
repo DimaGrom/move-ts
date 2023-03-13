@@ -102,7 +102,6 @@ const MovePage:React.FC = () => {
 					)
 				}
 
-
 				<div>
 					{
 						token && (
