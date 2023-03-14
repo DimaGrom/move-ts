@@ -1,0 +1,23 @@
+.Delete {}
+
+.Delete {
+	display: none;
+}
+
+.Delete.active {
+	color: black;
+	display: block;
+	position: absolute;
+	background: green;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 50px;
+	z-index: 50;
+}
+.Delete {}
+

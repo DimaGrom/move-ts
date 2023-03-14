@@ -1,6 +1,6 @@
 import {AuthAction, AuthActionTypes} from '../../types/auth'
 import {Dispatch} from 'redux'
-import {authUserLocalforage, authCreateLocalforage, authLogoutLocalforage} from '../../utils/authLocalforage'
+import {authUserLocalforage, authCreateLocalforage, authLogoutLocalforage, authDeleeteLF} from '../../utils/authLocalforage'
 import {checkUserByName, createNewUser} from '../../utils/userLocalforage'
 const uniqid = require("uniqid") 
 
@@ -118,6 +118,16 @@ export const authLogout = () => {
 		await authLogoutLocalforage()
 		dispatch({
 			type: AuthActionTypes.AUTH_LOGOUT
+		})
+	}
+}
+
+// Удаляем пользователя
+export const authDeleete = (token: string) => {
+	return async (dispatch: Dispatch<AuthAction>) => {
+		await authDeleeteLF(token)
+		dispatch({
+			type: AuthActionTypes.AUTH_DELEETE
 		})
 	}
 }

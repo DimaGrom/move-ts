@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import '../../css.css'
 import './navbar.css'
+import Delete from '../Delete/Delete'
 import {NavLink, useNavigate} from 'react-router-dom'
 import loginImg from '../../icons/signin.png'
 import logout from '../../icons/logout.png'
@@ -10,10 +11,11 @@ import {useAction} from '../../hooks/useActions'
 
 const Navbar = () => {
 	const navigate = useNavigate()
-	const {token} = useTypedSelector(state => state.auth)
-	const {authLogout} = useAction()
+	const {token, name} = useTypedSelector(state => state.auth)
+	const {authLogout, authDeleete} = useAction()
 	const [toggle, setToggle] = useState(false)
 	const isActiveStyle = {opacity: '1'}
+	const [deletActive, setDeletActive] = useState(false)
 
 	const handleLogOut = () => {
 		setToggle(false)
@@ -26,6 +28,7 @@ const Navbar = () => {
 	}
 
 	return (
+		<>
 		<div className='Navbar text-ms'>
 			<div className='container'>
 				<div>
@@ -88,14 +91,21 @@ const Navbar = () => {
 							{
 								(token)
 									? (
-										<button className='text-ms'>
-											<img 
-												onClick={handleLogOut}
-												alt='Картинка'
-												src={logout}
-												className='cursor cursor hover-img'
-											/>
-										</button>
+										<>
+											<button 
+												onClick={() => setDeletActive(!deletActive)}
+												className='text-ms'
+												style={{color: 'white', marginRight: 10}}
+											>{name}</button>
+											<button className='text-ms'>
+												<img 
+													onClick={handleLogOut}
+													alt='Картинка'
+													src={logout}
+													className='cursor cursor hover-img'
+												/>
+											</button>
+										</>
 									) : (
 										<NavLink 
 											onClick={() => setToggle(false)}
@@ -116,6 +126,11 @@ const Navbar = () => {
 				</div>
 			</div>
 		</div>
+		<Delete 
+			active={deletActive} 
+			changeActive={setDeletActive} 
+		/>
+		</>
 	)
 }
 

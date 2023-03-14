@@ -19,6 +19,7 @@ export enum AuthActionTypes {
 	AUTH_LOGIN_ERROR = 'AUTH_LOGIN_ERROR',
 	AUTH_ME = 'AUTH_ME',
 	AUTH_LOGOUT = 'AUTH_LOGOUT',
+	AUTH_DELEETE = 'AUTH_DELEETE',
 }
 
 interface createNewUserErrorAction {
@@ -63,6 +64,10 @@ interface authLogoutAction {
 	type: AuthActionTypes.AUTH_LOGOUT;
 }
 
+interface authDeleeteAction {
+	type: AuthActionTypes.AUTH_DELEETE;
+}
+
 export type AuthAction = 
 	AuthStatus |
 	authMeAction |
@@ -72,4 +77,5 @@ export type AuthAction =
 	AuthLoginAction |
 	AuthLoginSuccessAction |
 	AuthLoginErrorAction |
-	authLogoutAction
+	authLogoutAction |
+	authDeleeteAction

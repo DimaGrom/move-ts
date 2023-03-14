@@ -7,7 +7,6 @@ import RegistrationPage from '../../pages/RegistrationPage/RegistrationPage'
 import PopularPage from '../../pages/PopularPage/PopularPage'
 import MovePage from '../../pages/MovePage/MovePage'
 import MyMovePageg from '../../pages/MyMovePageg/MyMovePageg'
-
 import AboutPage from '../../pages/About'
 
 
@@ -65,6 +64,7 @@ const App: React.FC = () => {
 
 				</Routes>
 			</Layout>
+
 
 
 			<button 

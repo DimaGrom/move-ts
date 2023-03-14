@@ -60,6 +60,11 @@ export const authReducer = (state=initialState, action: AuthAction): AuthUser =>
 				...state, loadig: false, token: null, success: false,
 			}
 
+		case AuthActionTypes.AUTH_DELEETE:
+			return {
+				...state, loadig: false, token: null, success: false,
+			}
+
 		default:
 			return state
 	}
