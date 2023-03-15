@@ -41,6 +41,7 @@ export enum MoveActionTypes {
 	MY_MOVE = 'MY_MOVE',
 	MY_MOVE_CHECK = 'MY_MOVE_CHECK',
 	MY_MOVE_FILMS = 'MY_MOVE_FILMS',
+	MY_MOVE_FILMS_DELETE = 'MY_MOVE_FILMS_DELETE',
 }
 
 interface MoveStartAction {
@@ -87,6 +88,11 @@ interface MyMoveFilmsAction {
 	payload: IMove[];
 }
 
+interface MyMoveFilmsDeleteAction {
+	type: MoveActionTypes.MY_MOVE_FILMS_DELETE;
+	payload: number;
+}
+
 export type MoveAction = 
 	MoveStartAction |
 	MoveSuccessAction |
@@ -96,4 +102,5 @@ export type MoveAction =
 	MyMoveDeleteAction |
 	MyMoveAction |
 	MyMoveCheckAction |
-	MyMoveFilmsAction
+	MyMoveFilmsAction |
+	MyMoveFilmsDeleteAction

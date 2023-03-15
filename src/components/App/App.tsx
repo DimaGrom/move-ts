@@ -8,7 +8,7 @@ import PopularPage from '../../pages/PopularPage/PopularPage'
 import MovePage from '../../pages/MovePage/MovePage'
 import MyMovePageg from '../../pages/MyMovePageg/MyMovePageg'
 import AboutPage from '../../pages/About'
-
+import CommentPage from '../../pages/CommentPage/CommentPage'
 
 import '../../css.css'
 
@@ -53,6 +53,7 @@ const App: React.FC = () => {
 
 
 					<Route path=':id' element={<MovePage />} />
+					<Route path=':id/comment' element={<CommentPage />} />
 
 
 					<Route path='/about'>

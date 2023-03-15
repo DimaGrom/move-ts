@@ -54,10 +54,15 @@ export const moveReducer = (state=initialState, action:MoveAction): IMoveState =
 		return {
 			...state, checkMyMovies: action.payload
 		}
-		// Заполняем массив избранными страницами
+		// Заполняем массива избранных фильмов
 		case MoveActionTypes.MY_MOVE_FILMS:
 		return {
 			...state, myMoveFilms: action.payload
+		}
+		// Удаляем фильм массива избранных фильмов по id
+		case MoveActionTypes.MY_MOVE_FILMS_DELETE:
+		return {
+			...state, myMoveFilms: state.myMoveFilms.filter(f => f.id  !== action.payload)
 		}
 
 		default:

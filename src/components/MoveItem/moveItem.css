@@ -68,3 +68,7 @@
 	.MoveItem__title {
 		top: 56%;	}
 }
+
+.MoveItem__icon div {
+	cursor: pointer;
+}

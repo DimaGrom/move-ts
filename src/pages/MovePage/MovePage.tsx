@@ -3,7 +3,7 @@ import '../../css.css'
 import './MovePage.css'
 import {useTypedSelector} from '../../hooks/useTypedSelector'
 import {useAction} from '../../hooks/useActions'
-import {useParams} from  'react-router-dom'
+import {useParams, useNavigate} from  'react-router-dom'
 import {FilmiesStorage} from '../../db/movies-db'
 import emptyLike from '../../icons/heart_01.png'
 
@@ -27,6 +27,7 @@ const MovePage:React.FC = () => {
 	const {token, likeMoves} = useTypedSelector(state => state.auth)
 	const [add, setAdd] = useState(false)
 	const [check, setCheck] = useState(false)
+	const navigate = useNavigate()
 
 	useEffect(() => {
 		moveLoading(FilmiesStorage)
@@ -67,6 +68,13 @@ const MovePage:React.FC = () => {
 		)
 	}
 
+	const handleCommet = () => {
+		console.log('MovePage:React.FC Функция handleCommet ')
+		if(move) {
+			navigate(`/${move.id}/comment`)
+		}
+	}
+
 	return (
 		<div className='MovePage'>
 			
@@ -76,10 +84,11 @@ const MovePage:React.FC = () => {
 				}
 			</div>
 
-			<div>
-				<div>COMMENT</div>
-				
-
+			<div className='MovePage__panale'>
+				<div
+					onClick={handleCommet}
+					className='MovePage__commet'
+				>COMMENT</div>	
 				{
 					(token && !checkMyMovies) && (
 						<div
@@ -90,7 +99,6 @@ const MovePage:React.FC = () => {
 						</div>
 					)
 				}
-
 				{
 					(token && checkMyMovies) && (
 						<div
@@ -101,19 +109,6 @@ const MovePage:React.FC = () => {
 						</div>
 					)
 				}
-
-				<div>
-					{
-						token && (
-							<img 
-								src={emptyLike} 
-								alt='like' 
-								className='heart'
-							/>	
-						)
-					}		
-				</div>
-
 			</div>
 
 			<div className='MovePage__content'>

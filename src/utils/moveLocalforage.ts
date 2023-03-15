@@ -83,6 +83,17 @@ export const myMoveFilmsLF = async (moves: any[], token: string) => {
 
 		return myMoveFilms
 	}
-
-	
 }	
+
+// Удаляем фильм массива избранных фильмов по id
+export const myMoveFilmsDeleteByIdLF = async (id: number, token: string) => {
+	
+	const users: any = await localforage.getItem('users')
+	const newUsers: any = await users.filter((f: any) => f.name !== token)
+ 	
+	const user = await users.find((f:any) => f.name === token)
+
+	user.likeMoves = user.likeMoves.filter((f: number) => f !== id)
+
+	await localforage.setItem('users', [...newUsers, user])
+}

@@ -2,7 +2,11 @@ import React from 'react'
 import '../../css.css'
 import './moveItem.css'
 import {useNavigate} from 'react-router-dom'
+import deietImg from '../../icons/Button_Delete-01_25095.png'
+import {useAction} from '../../hooks/useActions' 
+import {useTypedSelector} from '../../hooks/useTypedSelector'
 
+ 
 interface IDescriptions {
 	content: string;
 }
@@ -24,15 +28,24 @@ interface ArrayProps {
 
 interface IProps {
 	move: ArrayProps;
+	check?: boolean;
 }
 
 const MoveItem: React.FC<IProps> = (props) => {
 	const {title, src, descriptions, like, id, comments} = props.move
+	const {check} = props
 	const navigate = useNavigate()
+	const {myMoveFilmsDeleteByIdAC} = useAction()
+	const {token} = useTypedSelector(state => state.auth)
 
 	const handleNavigate = () => {
-		console.log('MoveItem  id ',  id)
 		navigate(`/${id}`)
+	}
+
+	const handleDelete = () => {
+		if(token) {
+			myMoveFilmsDeleteByIdAC(Number(id), token)
+		}
 	}
 
 	return (
@@ -47,6 +60,21 @@ const MoveItem: React.FC<IProps> = (props) => {
 					alt='Film'
 				/>
 			</div>
+
+			{
+				check && (
+					<div className='MoveItem__icon'>
+						<div>COMMENT</div>
+						<div>
+							<img 
+								onClick={handleDelete}
+								src={deietImg} 
+								alt='delet' 
+								/>
+						</div>
+					</div>
+				)
+			}
 			
 			<p className='MoveItem__title'>{title}</p>
 			<div className='line-clamp-3'>
@@ -57,6 +85,7 @@ const MoveItem: React.FC<IProps> = (props) => {
 				}
 			</div>
 			<div></div>
+
 		</div>
 	)
 }

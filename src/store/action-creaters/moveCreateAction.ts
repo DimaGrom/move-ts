@@ -5,10 +5,9 @@ import {
 	myMoveArraDellete, 
 	myMoviesLF,
 	myMoviesCheckLF,
-	myMoveFilmsLF
+	myMoveFilmsLF,
+	myMoveFilmsDeleteByIdLF
 } from '../../utils/moveLocalforage'
-
-import {} from '../../utils/userLocalforage'
 
 export const moveLoading = (params: any[]) => {
 	return async (dispatch: Dispatch<MoveAction>) => {
@@ -105,6 +104,8 @@ export const myMoveCheckCA = (params: number, token: string) => {
 	}
 }
 
+// Заполняем массива избранных фильмов
+// myMoveFilmsAC
 export const myMoveFilmsAC = (move: any[], token: string) => {
 	return async (dispatch: Dispatch<MoveAction>) => {
 		const myMoveFilms = await myMoveFilmsLF(move, token)
@@ -112,6 +113,19 @@ export const myMoveFilmsAC = (move: any[], token: string) => {
 		dispatch({
 			type: MoveActionTypes.MY_MOVE_FILMS,
 			payload: myMoveFilms
+		})
+	}
+}
+
+// Удаляем фильм массива избранных фильмов по id
+// MoveItem 
+export const myMoveFilmsDeleteByIdAC = (id: number, token: string) => {
+	return async (dispatch: Dispatch<MoveAction>) => {
+		// console.log('Функция myMoveFilmsDeleteByIDAC id ', id)
+		await myMoveFilmsDeleteByIdLF(id, token)
+		dispatch({
+			type: MoveActionTypes.MY_MOVE_FILMS_DELETE,
+			payload: id
 		})
 	}
 }
