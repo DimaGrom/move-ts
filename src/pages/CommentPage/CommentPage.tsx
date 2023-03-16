@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import '../../css.css'
 import './CommentPage.css'
+import CommentForm from '../../components/CommentForm/CommentForm'
 import {useTypedSelector} from '../../hooks/useTypedSelector'
 import {useAction} from '../../hooks/useActions'
 import {useParams, NavLink} from  'react-router-dom'
@@ -26,6 +27,9 @@ const CommentPage:React.FC = () => {
 	const {token, likeMoves} = useTypedSelector(state => state.auth)
 	// const [add, setAdd] = useState(false)
 	// const [check, setCheck] = useState(false)
+	const [form, setForm] = useState(false)
+
+	console.log('CommentPage:React.FC form ', form)
 
 	const commet = []
 
@@ -40,7 +44,9 @@ const CommentPage:React.FC = () => {
 		}	
 	}, [movies])
 
-
+	const handleCreateComment = () => {
+		setForm(true)
+	}
 	
 	return (
 		<div className='CommentPage'>
@@ -85,6 +91,20 @@ const CommentPage:React.FC = () => {
 				}
 				
 			</div>
+
+			<div>
+
+				<div 
+					className='CommentPage__write-comment' 
+					onClick={handleCreateComment}
+				>
+					Напишите комментаии
+				</div>
+					<CommentForm 
+						active={form}
+						setActive={setForm}
+   			  />		
+			</div>
 			
 
 		</div>
@@ -92,45 +112,3 @@ const CommentPage:React.FC = () => {
 }
 
 export default CommentPage
-
-
-// CommentPage
-
-		// <div className='CommentPage'>
-			
-		// 	<div className='CommentPage__img'>
-		// 		{
-		// 			move.src && <img src={move.src} alt='picture' />
-		// 		}
-		// 	</div>
-
-		// 	<div className='CommentPage__panale'>
-		// 		<div>COMMENT</div>	
-		// 		{
-		// 			(token && !checkMyMovies) && (
-		// 				<div
-		// 					className="CommentPage__add"
-		// 					onClick={handleAddMove}
-		// 				>
-		// 					ADD
-		// 				</div>
-		// 			)
-		// 		}
-		// 		{
-		// 			(token && checkMyMovies) && (
-		// 				<div
-		// 					className="CommentPage__delete"
-		// 					onClick={handleDeleteMove}
-		// 				>
-		// 					DELLETE
-		// 				</div>
-		// 			)
-		// 		}
-		// 	</div>
-
-		// 	<div className='CommentPage__comment'>
-		// 		<h1>Написать комментарии</h1>
-		// 	</div>
-			
-
-		// </div>

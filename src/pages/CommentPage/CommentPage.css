@@ -67,3 +67,21 @@
 .CommentPage_a:hover {
 	opacity: 1;
 }
+
+.CommentPage__write-comment{
+	background:#5E5373;
+	color: white;
+	border: solid #368BD3 1px;
+	width: 80%;
+	height: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+
+@media (max-width: 767px) {
+	.CommentPage__write-comment {
+		width: 100%;
+	}
+}

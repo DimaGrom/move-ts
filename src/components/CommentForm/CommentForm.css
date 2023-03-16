@@ -1,0 +1,85 @@
+.CommentForm {
+	display: none;
+}
+
+.CommentForm.active {
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: gray;
+	z-index: 10;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.CommentForm__wrape {
+	position: relative;
+	background: white;
+	width: 80vh;
+	padding: 20px 30px;
+	margin: 0 20px;
+	border-radius: 5px;
+}
+
+@media (max-width: 540px) {
+	.CommentForm__wrape {
+		padding: 10px 20px;
+		width: 90%;
+	}
+}
+
+.CommentForm__wrape h3 {
+	color: gray;
+	font-size: 18px;
+}
+
+@media (max-width: 540px) {
+	.CommentForm__wrape h3 {
+		font-size: 16px;
+	}
+}
+
+.CommentForm__img {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 50;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.CommentForm form {
+	margin: 20px 0 10px 0;
+}
+
+.CommentForm textarea {
+	width: 100%;
+    height: 200px;
+    border: solid #5E5373 1px;
+    padding: 5px 10px;
+    outline: navajowhite;
+    overflow: hidden;
+}
+
+@media (max-width: 740px) {
+	.CommentForm textarea {
+		height: 120px;
+	}
+}
+
+@media (max-width: 540px) {
+	.CommentForm textarea {
+		height: 120px;
+	}
+}
+
+.CommentForm__btn {
+	margin: 10px 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
