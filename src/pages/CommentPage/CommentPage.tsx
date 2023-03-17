@@ -4,7 +4,7 @@ import './CommentPage.css'
 import CommentForm from '../../components/CommentForm/CommentForm'
 import {useTypedSelector} from '../../hooks/useTypedSelector'
 import {useAction} from '../../hooks/useActions'
-import {useParams, NavLink} from  'react-router-dom'
+import {useParams, NavLink, useNavigate} from  'react-router-dom'
 import {FilmiesStorage} from '../../db/movies-db'
 import emptyLike from '../../icons/heart_01.png'
 
@@ -28,8 +28,9 @@ const CommentPage:React.FC = () => {
 	// const [add, setAdd] = useState(false)
 	// const [check, setCheck] = useState(false)
 	const [form, setForm] = useState(false)
+	const navigate = useNavigate()
 
-	console.log('CommentPage:React.FC form ', form)
+	// console.log('CommentPage:React.FC form ', form)
 
 	const commet = []
 
@@ -46,6 +47,10 @@ const CommentPage:React.FC = () => {
 
 	const handleCreateComment = () => {
 		setForm(true)
+	}
+
+	const handleForMainPage = () => {
+		navigate('/')
 	}
 	
 	return (
@@ -82,13 +87,7 @@ const CommentPage:React.FC = () => {
 						</div>
 					)
 				}
-				{
-					(commet.length !== 0 && token) && (
-						<div className='CommentPage__not-comment'>
-							<h1>Написать комментарии</h1>
-						</div>
-					)
-				}
+	
 				
 			</div>
 
@@ -99,6 +98,13 @@ const CommentPage:React.FC = () => {
 					onClick={handleCreateComment}
 				>
 					Напишите комментаии
+				</div>
+
+				<div 
+					className='CommentPage__formain' 
+					onClick={handleForMainPage}
+				>
+					На Главную
 				</div>
 					<CommentForm 
 						active={form}

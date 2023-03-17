@@ -68,7 +68,7 @@
 	opacity: 1;
 }
 
-.CommentPage__write-comment{
+.CommentPage__write-comment, .CommentPage__formain{
 	background:#5E5373;
 	color: white;
 	border: solid #368BD3 1px;
@@ -80,8 +80,18 @@
 	cursor: pointer;
 }
 
+.CommentPage__formain {
+	display: none;
+}
+
 @media (max-width: 767px) {
 	.CommentPage__write-comment {
 		width: 100%;
+	}
+
+	.CommentPage__formain {
+		width: 100%;
+		display: flex;
+		margin: 10px 0;
 	}
 }

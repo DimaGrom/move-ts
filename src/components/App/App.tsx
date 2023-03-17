@@ -28,8 +28,16 @@ const App: React.FC = () => {
 		console.log('App: React.FC  users ', users)
 	})
 
+	localforage.getItem('comments').then(comments => {
+		console.log('App: React.FC  comments ', comments)
+	})
+
 	const handleDeletUsers = () => {
 		localforage.removeItem('users')
+	}
+
+	const handleDeletComments = () => {
+		localforage.removeItem('comments')
 	}
 
 	// useEffect(() => {
@@ -72,6 +80,12 @@ const App: React.FC = () => {
 				onClick={handleDeletUsers}
 				style={{color: 'black', fontSize: 42}}
 			>Удалить всех пользователей</button>
+
+			<br />
+			<button 
+				onClick={handleDeletComments}
+				style={{color: 'black', fontSize: 42}}
+			>Удалить все комментарии</button>
 
 
 		</div>

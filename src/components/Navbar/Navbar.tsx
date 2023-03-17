@@ -95,7 +95,7 @@ const Navbar = () => {
 											<button 
 												onClick={() => setDeletActive(!deletActive)}
 												className='text-ms'
-												style={{color: 'white', marginRight: 10}}
+												style={{color: 'white', marginRight: 20}}
 											>{name}</button>
 											<button className='text-ms'>
 												<img 

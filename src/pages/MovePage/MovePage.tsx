@@ -7,6 +7,7 @@ import {useParams, useNavigate} from  'react-router-dom'
 import {FilmiesStorage} from '../../db/movies-db'
 import emptyLike from '../../icons/heart_01.png'
 
+
 const MovePage:React.FC = () => {
 
 	const {
@@ -15,7 +16,8 @@ const MovePage:React.FC = () => {
 		myMoveAddCreateAction, 
 		myMoveDeleteCA, 
 		myMoveCA, 
-		myMoveCheckCA
+		myMoveCheckCA,
+		commentCA
 	} = useAction()
 	const params = useParams()
 	const {
@@ -24,6 +26,7 @@ const MovePage:React.FC = () => {
 		myMovies, 
 		checkMyMovies,
 	} = useTypedSelector(state => state.movies)
+	const {commentCount} = useTypedSelector(state => state.comment)
 	const {token, likeMoves} = useTypedSelector(state => state.auth)
 	const [add, setAdd] = useState(false)
 	const [check, setCheck] = useState(false)
@@ -45,6 +48,10 @@ const MovePage:React.FC = () => {
 			myMoveCheckCA(Number(params.id), token)
 		}	
 	}, [myMovies])
+
+	useEffect(() => {
+		commentCA(Number(params.id))
+	}, [])
 	
 	const handleAddMove = () => {
 		if(token) {
@@ -88,7 +95,7 @@ const MovePage:React.FC = () => {
 				<div
 					onClick={handleCommet}
 					className='MovePage__commet'
-				>COMMENT</div>	
+				>COMMENT {commentCount}</div>	
 				{
 					(token && !checkMyMovies) && (
 						<div
