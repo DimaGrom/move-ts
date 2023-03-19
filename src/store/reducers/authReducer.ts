@@ -9,6 +9,7 @@ const initialState: AuthUser = {
 	status: null,
 	success: false,
 	token: null,
+	tokenID: null,
 }
 
 export const authReducer = (state=initialState, action: AuthAction): AuthUser => {
@@ -17,7 +18,7 @@ export const authReducer = (state=initialState, action: AuthAction): AuthUser =>
 		
 		case AuthActionTypes.AUTH_ME:
 			return {
-				...state, loadig: false, error: null, name: action.paylod, success: true, token: action.paylod
+				...state, loadig: false, error: null, name: action.payload.name, success: false, token: action.payload.name, tokenID: action.payload.tokenID
 			}
 
 		case AuthActionTypes.AUTH_REGISTER:
@@ -27,17 +28,17 @@ export const authReducer = (state=initialState, action: AuthAction): AuthUser =>
 
 		case AuthActionTypes.AUTH_REGISTER_SUCCESS:
 			return {
-				...state, loadig: false,  name: action.paylod, success: true, token: action.paylod
+				...state, loadig: false,  name: action.payload.name, success: true, token: action.payload.name, tokenID: action.payload.tokenID
 			}
 
 		case AuthActionTypes.AUTH_ERROR:
 			return {
-				...state, loadig: false, error: action.paylod
+				...state, loadig: false, error: action.payload
 			}
 
 		case AuthActionTypes.AUTH_STATUS:
 			return {
-				...state, loadig: false, status: action.paylod
+				...state, loadig: false, status: action.payload
 			}
 
 		case AuthActionTypes.AUTH_LOGIN:
@@ -47,22 +48,22 @@ export const authReducer = (state=initialState, action: AuthAction): AuthUser =>
 
 		case AuthActionTypes.AUTH_LOGIN_SUCCESS:
 			return {
-				...state, loadig: false, id: action.paylod.id, name: action.paylod.name, success: true, token: action.paylod.name
+				...state, loadig: false, id: action.payload.id, name: action.payload.name, success: true, token: action.payload.name, tokenID: action.payload.id
 			}
 
 		case AuthActionTypes.AUTH_LOGIN_ERROR:
 			return {
-				...state, loadig: false, error: action.paylod
+				...state, loadig: false, error: action.payload
 			}
 
 		case AuthActionTypes.AUTH_LOGOUT:
 			return {
-				...state, loadig: false, token: null, success: false,
+				...state, loadig: false, token: null, success: false, tokenID: null
 			}
 
 		case AuthActionTypes.AUTH_DELEETE:
 			return {
-				...state, loadig: false, token: null, success: false,
+				...state, loadig: false, token: null, success: false, tokenID: null
 			}
 
 		default:

@@ -7,8 +7,8 @@
 .Delete.active {
 	color: black;
 	display: block;
-	position: absolute;
-	background: green;
+	position: fixed;
+	background: grey;
 	left: 0;
 	top: 0;
 	width: 100%;
@@ -19,5 +19,35 @@
 	font-size: 50px;
 	z-index: 50;
 }
-.Delete {}
 
+.Delete__wrape {
+	position: relative;
+	background: white;
+	width: 80vh;
+	padding: 20px 30px;
+	margin: 0 20px;
+	border-radius: 5px;
+}
+
+@media (max-width: 540px) {
+	.CommentForm__wrape {
+		padding: 10px 20px;
+		width: 90%;
+	}
+}
+
+.Delete__img {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 50;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.Delete__btn {
+	margin: 10px 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}

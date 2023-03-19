@@ -95,3 +95,26 @@
 		margin: 10px 0;
 	}
 }
+
+.CommentPage__content {
+	display: flex;
+    flex-direction: column-reverse;
+    width: 80%;
+}
+
+@media (max-width: 767px) {
+	.CommentPage__content {
+		width: 100%;
+	}
+}
+
+.CommentPage__content div {
+	display: flex;
+	flex-direction: column;
+
+}
+
+
+.CommentPage__content div.right {
+	align-items: flex-end;
+}

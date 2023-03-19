@@ -53,6 +53,14 @@
 	opacity: 1;
 }
 
+.Navbar__name {
+	background: #CC5200;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	font-size: 20px;
+}
+
 @media (max-width: 767px) {
 
 	.Navbar__body.py-10 {
@@ -70,7 +78,7 @@
 		height: 20px;
 		border: none;
 		outline: none;
-		margin: 0 30px;
+		margin: 0 50px 0 30px;
 		position: absolute;
 		right: 50px;
 		z-index: 5;
@@ -164,9 +172,5 @@
 	.Navbar__menu .mx-5 {
 		margin: 0;
 	}
-
-	/*body.lock {
-		overflow: hidden;
-	}*/
 
 }

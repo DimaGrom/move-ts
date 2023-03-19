@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import '../../css.css'
 import './CommentForm.css'
 import closeImg from '../../icons/delete_2.png'
@@ -11,28 +11,29 @@ interface IFormProps {
 	setActive: (a: boolean) => void;
 }
 
-
-
 const CommentForm: React.FC<IFormProps> = (props) => {
 	const {active, setActive} = props
 	const [comment, setComment] = useState('')
 
 	const params = useParams()
 	const {createCommentCA} = useAction()
-	const {token} = useTypedSelector(state => state.auth)
+	const {token, tokenID} = useTypedSelector(state => state.auth)
+
+	useEffect(() => {
+		console.log('It`s CommentForm: React.FC<IFormProps>')
+	}, [])
 
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {event.preventDefault()};
 
 	const handleCreateComment = () => {
-		if(token) {
-			createCommentCA(Number(params.id), comment, token)
+		if(token && tokenID) {
+			createCommentCA(Number(params.id), comment, token, tokenID)
 			setComment('')
 			setActive(false)
 		}
 		
 	}	
 
-	
 
 	return (
 		<div className={`CommentForm ${active ? 'active' : ''}`}>

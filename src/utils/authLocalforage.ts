@@ -10,9 +10,14 @@ export const authCreateLocalforage = async (name: string) => {
 	await localforage.setItem('auth', name)
 }
 
+export const authCreateTokenIDLF = async (id: string) => {
+	await localforage.setItem('tokenId', id)
+}
+
 export const authUserLocalforage = async () => {
-	const request = await localforage.getItem('auth')
-	// console.log('authUserLocalforage request ', request)
+	const name = await localforage.getItem('auth')
+	const tokenID = await localforage.getItem('tokenId')
+	const request = {name, tokenID}
 	return request
 }
 
@@ -25,4 +30,5 @@ export const authDeleeteLF = async (token: string) => {
 	const newUsers = await users.filter((f: any) => f.name !== token)
 	await localforage.setItem('users', newUsers)
 	await localforage.removeItem('auth')
+	await localforage.removeItem('tokenId')
 }

@@ -55,7 +55,7 @@ export const myMoveArraDellete= async (id: number, token: string) => {
 export const myMoviesLF = async (id: number, token: string) => {
 	const request: any = await localforage.getItem('users')
 	if(token) {
-		const user = await request.find((f:any) => f.name === token)
+		const user: any = await request.find((f:any) => f.name === token)
 		return user.likeMoves	
 	}		
 }

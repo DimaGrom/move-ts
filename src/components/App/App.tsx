@@ -7,7 +7,6 @@ import RegistrationPage from '../../pages/RegistrationPage/RegistrationPage'
 import PopularPage from '../../pages/PopularPage/PopularPage'
 import MovePage from '../../pages/MovePage/MovePage'
 import MyMovePageg from '../../pages/MyMovePageg/MyMovePageg'
-import AboutPage from '../../pages/About'
 import CommentPage from '../../pages/CommentPage/CommentPage'
 
 import '../../css.css'
@@ -32,6 +31,8 @@ const App: React.FC = () => {
 		console.log('App: React.FC  comments ', comments)
 	})
 
+	console.log('App: React.FC  token ', token)
+
 	const handleDeletUsers = () => {
 		localforage.removeItem('users')
 	}
@@ -44,6 +45,8 @@ const App: React.FC = () => {
 	// 	localforage.removeItem('auth')
 	// 	localforage.removeItem('my_movies')
 	// 	localforage.removeItem('users')
+	// 	localforage.removeItem('comments')
+	// 	localforage.removeItem('tokenId')
 	// }, [])
 
 	useEffect(() => {
@@ -54,23 +57,13 @@ const App: React.FC = () => {
 		<div>
 			<Layout>
 				<Routes>
-					<Route path='/' element={<MainPage />} />
-					<Route path='/login' element={<LoginPage />} />
-					<Route path='/registration' element={<RegistrationPage />} />
-					<Route path='/popular' element={<PopularPage />} />
-
-
-					<Route path=':id' element={<MovePage />} />
 					<Route path=':id/comment' element={<CommentPage />} />
-
-
-					<Route path='/about'>
-						<Route index element={<AboutPage />} />
-						<Route path=':number' element={<AboutPage />} />
-					</Route>
-					
+					<Route path='/login' element={<LoginPage />} />
+					<Route path='/' element={<MainPage />} />
+					<Route path=':id' element={<MovePage />} />
 					<Route path='/my_film' element={<MyMovePageg />} />
-
+					<Route path='/popular' element={<PopularPage />} />
+					<Route path='/registration' element={<RegistrationPage />} />
 				</Routes>
 			</Layout>
 

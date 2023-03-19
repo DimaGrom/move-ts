@@ -140,6 +140,7 @@ legend {
 /*------ PADDING -------*/
 .py-10 {padding: 10px 0;}
 .py-20 {padding: 20px 0;}
+.pl-20 {padding-left: 20px;}
 
 /*------ EFFECTS --------*/
 .hover {

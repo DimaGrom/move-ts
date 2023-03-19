@@ -1,0 +1,74 @@
+.MyMoveItem {}
+
+.MyMoveItem {
+	width: 32%;
+	margin: 8px 0;
+	position: relative;
+}
+
+@media (max-width: 740px) {
+	.MyMoveItem {
+		width: 49%;
+	}
+}
+
+@media (max-width: 450px) {
+	.MyMoveItem {
+		width: 100%;
+	}
+}
+
+.MyMoveItem__img {
+	width: 100%;
+	height: 165px;
+	overflow: hidden;
+	object-fit: cover;
+	cursor: pointer;
+}
+
+.MyMoveItem__img:hover::before {
+	position: absolute;
+	content: '';
+	background: #e6f1f2f5;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 165px;
+	cursor: pointer;
+	opacity: 0.3;
+}
+
+@media (max-width: 450px) {
+	.MyMoveItem__img {
+		height: 150px;
+	}
+
+	.MyMoveItem__img:before {
+		height: 150px;
+	}
+}
+
+.MyMoveItem__img img {
+	height: 100%;
+	object-fit: cover;
+	width: 100%;
+}
+
+
+.MyMoveItem__title {
+    color: white;
+    position: absolute;
+    display: inline-block;
+    top: 60%;
+    left: 3%;
+    font-size: 16px;
+}
+
+@media (max-width: 450px) {
+	.MyMoveItem__title {
+		top: 56%;	}
+}
+
+.MyMoveItem__icon div {
+	cursor: pointer;
+}

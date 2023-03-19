@@ -3,7 +3,8 @@ import '../../css.css'
 import '../../components/MoveList/moveList.css'
 import {useTypedSelector} from '../../hooks/useTypedSelector'
 import {useAction} from '../../hooks/useActions'
-import MoveItem from '../../components/MoveItem/MoveItem'
+// import MoveItem from '../../components/MoveItem/MoveItem'
+import MyMoveItem from '../../components/MyMoveItem/MyMoveItem'
 import Pagination from '../../components/Pagination/Pagination'
 import {FilmiesStorage} from '../../db/movies-db'
 
@@ -31,6 +32,7 @@ const MyMovePageg:React.FC = () => {
 
 	useEffect(() => {
 		moveLoading(FilmiesStorage)
+		console.log('It`s MyMovePageg:React.FC')
 	}, [])
 
 	if(loadig) {
@@ -58,7 +60,7 @@ const MyMovePageg:React.FC = () => {
 		<div>
 			<div className='MoveList'>
 				{
-					myMoveFilms && myMoveFilms.slice(pageVisited, pageVisited + movePages).map((m, indx) => <MoveItem key={indx} move={m} check={myMovePageg} />)
+					myMoveFilms && myMoveFilms.slice(pageVisited, pageVisited + movePages).map((m, indx) => <MyMoveItem key={indx} move={m} check={myMovePageg} />)
 				}
 			</div>
 			<Pagination 

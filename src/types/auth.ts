@@ -7,6 +7,7 @@ export interface AuthUser {
 	status: null | number;
 	success: boolean;
 	token: string | null;
+	tokenID: string | null;
 }
 
 export enum AuthActionTypes {
@@ -24,12 +25,12 @@ export enum AuthActionTypes {
 
 interface createNewUserErrorAction {
 	type: AuthActionTypes.AUTH_ERROR;
-	paylod: string;
+	payload: string;
 } 
 
 interface AuthStatus {
 	type: AuthActionTypes.AUTH_STATUS;
-	paylod: number | null;
+	payload: number | null;
 }
 
 interface AuthRegister {
@@ -38,7 +39,10 @@ interface AuthRegister {
 
 interface AuthCreateSuccessAction {
 	type: AuthActionTypes.AUTH_REGISTER_SUCCESS;
-	paylod: string;
+	payload: {
+		name: string,
+		tokenID: string
+	};
 }
 
 interface AuthLoginAction {
@@ -47,17 +51,20 @@ interface AuthLoginAction {
 
 interface AuthLoginSuccessAction {
 	type: AuthActionTypes.AUTH_LOGIN_SUCCESS;
-	paylod: {name: string, id: string}
+	payload: {name: string, id: string}
 }
 
 interface AuthLoginErrorAction {
 	type: AuthActionTypes.AUTH_LOGIN_ERROR;
-	paylod: string
+	payload: string
 }
 
 interface authMeAction {
 	type: AuthActionTypes.AUTH_ME;
-	paylod: any;
+	payload: {
+		name: string,
+		tokenID: string
+	};
 }
 
 interface authLogoutAction {

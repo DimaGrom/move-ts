@@ -19,21 +19,29 @@ const MovePage:React.FC = () => {
 		myMoveCheckCA,
 		commentCA
 	} = useAction()
+
 	const params = useParams()
+
 	const {
 		move, 
 		movies, 
 		myMovies, 
 		checkMyMovies,
 	} = useTypedSelector(state => state.movies)
+
 	const {commentCount} = useTypedSelector(state => state.comment)
+
 	const {token, likeMoves} = useTypedSelector(state => state.auth)
+
 	const [add, setAdd] = useState(false)
+
 	const [check, setCheck] = useState(false)
+	
 	const navigate = useNavigate()
 
 	useEffect(() => {
 		moveLoading(FilmiesStorage)
+		console.log('It`s MovePage:React.FC')
 	}, [])
 
 	useEffect(() => {
@@ -76,7 +84,6 @@ const MovePage:React.FC = () => {
 	}
 
 	const handleCommet = () => {
-		console.log('MovePage:React.FC Функция handleCommet ')
 		if(move) {
 			navigate(`/${move.id}/comment`)
 		}

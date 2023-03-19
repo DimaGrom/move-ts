@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import '../../css.css'
-import './moveItem.css'
+import './MyMoveItem.css'
 import {useNavigate} from 'react-router-dom'
 import deietImg from '../../icons/Button_Delete-01_25095.png'
 import {useAction} from '../../hooks/useActions' 
@@ -28,14 +28,16 @@ interface ArrayProps {
 
 interface IProps {
 	move: ArrayProps;
+	check: boolean;
 }
 
-const MoveItem: React.FC<IProps> = (props) => {
+const MyMoveItem: React.FC<IProps> = (props) => {
 
 	const {title, src, descriptions, like, id, comments} = props.move
 
-	const [test, setTest] = useState(true)
 	const [count, setCount] = useState(0)
+
+	const {check} = props
 
 	const navigate = useNavigate()
 
@@ -46,19 +48,15 @@ const MoveItem: React.FC<IProps> = (props) => {
 	const {commentCount} = useTypedSelector(state => state.comment)
 
 	useEffect(() => {
-		console.log('It`s MoveItem: React.FC<IProps>')
+		console.log('It`s MyMoveItem: React.FC<IProps>')
 	}, [])
 
 	useEffect(() => {
-		if(test) {
-			(async () => {
-				const data: any = await commentAllCA(Number(id))
-				setCount(data)
-			})()
-		}
-		return () => {setTest(false)}
+		(async () => {
+			const data: any = await commentAllCA(Number(id))
+			setCount(data)
+		})()
 	}, [])
-
 
 	const handleNavigate = () => {
 		navigate(`/${id}`)
@@ -71,10 +69,10 @@ const MoveItem: React.FC<IProps> = (props) => {
 	}
 
 	return (
-		<div className='MoveItem'>
+		<div className='MyMoveItem'>
 
 			<div 
-				className='MoveItem__img'
+				className='MyMoveItem__img'
 				onClick={handleNavigate}
 			>
 				<img
@@ -82,8 +80,23 @@ const MoveItem: React.FC<IProps> = (props) => {
 					alt='Film'
 				/>
 			</div>
+
+			{
+				check && (
+					<div className='MyMoveItem__icon'>
+						<div>COMMENT {count}</div>
+						<div>
+							<img 
+								onClick={handleDelete}
+								src={deietImg} 
+								alt='delet' 
+								/>
+						</div>
+					</div>
+				)
+			}
 			
-			<p className='MoveItem__title' style={{color: 'black', margin: '10px 0'}}>{title}</p>
+			<p className='MyMoveItem__title' style={{color: 'black', margin: '10px 0'}}>{title}</p>
 			<div className='line-clamp-3'>
 				{
 					descriptions && descriptions.map((m, indx) => (
@@ -97,4 +110,4 @@ const MoveItem: React.FC<IProps> = (props) => {
 	)
 }
 
-export default MoveItem
+export default MyMoveItem

@@ -1,6 +1,6 @@
 import {AuthAction, AuthActionTypes} from '../../types/auth'
 import {Dispatch} from 'redux'
-import {authUserLocalforage, authCreateLocalforage, authLogoutLocalforage, authDeleeteLF} from '../../utils/authLocalforage'
+import {authUserLocalforage, authCreateLocalforage, authLogoutLocalforage, authDeleeteLF, authCreateTokenIDLF} from '../../utils/authLocalforage'
 import {checkUserByName, createNewUser} from '../../utils/userLocalforage'
 const uniqid = require("uniqid") 
 
@@ -19,7 +19,7 @@ export const authRegister = (name: string) => {
 			if(checkUser !== undefined) {
 				dispatch({
 					type: AuthActionTypes.AUTH_STATUS,
-					paylod: 404
+					payload: 404
 				})
 			} else {
 				dispatch({
@@ -30,18 +30,24 @@ export const authRegister = (name: string) => {
 				newUser.name = name
 				newUser.likeMoves = []
 				await createNewUser(newUser)
+
+				const res = {
+					name: newUser.name,
+					tokenID: String(newUser.id)
+				}
 				setTimeout(() => {
 					dispatch({
 						type: AuthActionTypes.AUTH_REGISTER_SUCCESS,
-						paylod: newUser.name
+						payload: res
 					})
 				}, 500)
 				await authCreateLocalforage(newUser.name)
+				await authCreateTokenIDLF(String(newUser.id))
 			}
 		} catch (e) {
 			dispatch({
 				type: AuthActionTypes.AUTH_ERROR,
-				paylod: 'Ошибка при создаение новго пользователя'
+				payload: 'Ошибка при создаение новго пользователя'
 			})
 		}
 	}
@@ -55,7 +61,7 @@ export const authLogin = (name: string) => {
 			if(checkUser === undefined) {
 				dispatch({
 					type: AuthActionTypes.AUTH_STATUS,
-					paylod: 404
+					payload: 404
 				})
 			} else {
 				dispatch({
@@ -64,18 +70,19 @@ export const authLogin = (name: string) => {
 				setTimeout(() => {
 					dispatch({
 						type: AuthActionTypes.AUTH_LOGIN_SUCCESS,
-						paylod: {
+						payload: {
 							name: checkUser.name,
 							id: checkUser.id
 						}
 					})
 				}, 700)
 				await authCreateLocalforage(name)
+				await authCreateTokenIDLF(checkUser.id)
 			}
 		} catch(e) {
 			dispatch({
 				type: AuthActionTypes.AUTH_LOGIN_ERROR,
-				paylod: 'Ошибка ввода имени или пароля.'
+				payload: 'Ошибка ввода имени или пароля.'
 			})
 		}
 	}
@@ -84,19 +91,19 @@ export const authLogin = (name: string) => {
 // Проверяем на наличе для сохранения пользователя при перезагрузке
 export const authMe = () => {
 	return async (dispatch: Dispatch<AuthAction>) => {
-		const user = await authUserLocalforage()
-		// console.log('export const authMe user', user)
+		const user: any = await authUserLocalforage()
+		console.log('export const authMe user', user)
 		try {
 			if(user) {
 				dispatch({
 					type: AuthActionTypes.AUTH_ME,
-					paylod: user
+					payload: user
 				})
 			}	
 		} catch (e) {
 			dispatch({
 				type: AuthActionTypes.AUTH_ERROR,
-				paylod: 'Ошибка заргрузки пользователя'
+				payload: 'Ошибка заргрузки пользователя'
 			})
 		}
 	}
@@ -107,7 +114,7 @@ export const authStatuse = () => {
 	return async (dispatch: Dispatch<AuthAction>) => {
 		dispatch({
 			type: AuthActionTypes.AUTH_STATUS,
-			paylod: null
+			payload: null
 		})
 	}
 }

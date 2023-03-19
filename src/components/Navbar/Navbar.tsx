@@ -87,14 +87,14 @@ const Navbar = () => {
 							</div>
 						</div>
 
-						<div className='zind-5'>
+						<div className='zind-5 flex pl-20'>
 							{
 								(token)
 									? (
 										<>
 											<button 
 												onClick={() => setDeletActive(!deletActive)}
-												className='text-ms'
+												className='Navbar__name'
 												style={{color: 'white', marginRight: 20}}
 											>{name}</button>
 											<button className='text-ms'>
@@ -108,9 +108,10 @@ const Navbar = () => {
 										</>
 									) : (
 										<NavLink 
+											to='/login'
 											onClick={() => setToggle(false)}
 											className='text-ms relative zind-5' 
-											to='/login'>
+											>
 											<img 
 											alt='Картинка'
 											src={loginImg}

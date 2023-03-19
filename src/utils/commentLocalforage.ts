@@ -5,7 +5,6 @@ import uniqid from 'uniqid'
 import dateNow from '../utils/dateTime'
 
 
-
 export const commentLF = async (id: number) => {
 	const request: any = await localforage.getItem('comments')	
 
@@ -16,16 +15,21 @@ export const commentLF = async (id: number) => {
 	if(request !== null) {
 		const coment: any = await request?.find((f: any) => f.commentAdress === id)
 
-		console.log('Функция commentLF coment.comments ', coment.comments.length)
-		const commentsCount = await coment.comments.length
-		return commentsCount
-	}
+		if(coment !== undefined) {
+			const commentsCount = await coment.comments.length
 
-	return request
+			return commentsCount
+		} 
+
+		if (coment === undefined) {
+			return 0
+		}
+
+	}
 }
 
-
 interface Icomments {
+	auth: string;
 	authID: string;
 	name: string;
 	text: string;
@@ -33,14 +37,13 @@ interface Icomments {
 	datedate: string;
 }
 
-
 interface IComments {
 	commentID: string;
 	commentAdress: number;
 	comments: [] | Icomments[];
 }
 
-export const createCommentLF = async (id: number, comment: string, token: string) => {
+export const createCommentLF = async (id: number, comment: string, token: string, tokenID: string) => {
 	const request: any = await localforage.getItem('comments')
 
 	// Если комментов вообще нет создаём первый
@@ -52,7 +55,8 @@ export const createCommentLF = async (id: number, comment: string, token: string
 		newComment.commentAdress = id
 
 		newComment.comments = [{
-			authID: token,
+			auth: token,
+			authID: tokenID,
 			name: token,
 			text: comment,
 			datecreate: Date.now(),
@@ -60,8 +64,9 @@ export const createCommentLF = async (id: number, comment: string, token: string
 		}]
 
 		await localforage.setItem('comments', [newComment])
-		const respone = await localforage.getItem('comments')
-		return await respone
+		await localforage.getItem('comments')
+		// Нужно для толго что-бы остановить дальнейшее выполнеение
+		return await true
 	}
 
 	if(request !== null) {
@@ -72,7 +77,8 @@ export const createCommentLF = async (id: number, comment: string, token: string
 		if(check) {
 
 			check.comments = [...check.comments, {
-				authID: token,
+				auth: token,
+				authID: tokenID,
 				name: token,
 				text: comment,
 				datecreate: Date.now(),
@@ -89,7 +95,8 @@ export const createCommentLF = async (id: number, comment: string, token: string
 			newComment.commentAdress = id
 
 			newComment.comments = [{
-				authID: token,
+				auth: token,
+				authID: tokenID,
 				name: token,
 				text: comment,
 				datecreate: Date.now(),
@@ -99,6 +106,45 @@ export const createCommentLF = async (id: number, comment: string, token: string
 			await localforage.setItem('comments', [...request, newComment])		
 			const respone = await localforage.getItem('comments')
 			return await respone	
+		}
+	}
+}
+
+interface Icomments {
+	auth: string;
+	authID: string;
+	name: string;
+	text: string;
+	datecreate: number;
+	datedate: string;
+}
+
+interface IComment {
+	commentAdress: number,
+	commentID: string,
+	comments: [] | Icomments[]
+}
+
+export const commentsByIdAllLF = async (id: number) => {
+	const request: any = await localforage.getItem('comments')
+
+	if(request === null) {
+		return undefined
+	}
+
+	const respons: IComment[] = await request.find((f:any) => f.commentAdress === id)
+
+	if(request === null) {
+		return null
+	}
+
+	if(request !== null) {
+
+		if(respons !== undefined)
+		return respons
+
+		if(respons !== undefined) {
+			return null
 		}
 	}
 }
