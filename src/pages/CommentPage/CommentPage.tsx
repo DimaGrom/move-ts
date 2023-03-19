@@ -131,7 +131,7 @@ const CommentPage:React.FC = () => {
 				commentsById !== null && commentsById.comments.map((m, k) => 
 					<div 
 						key={k}
-						className={`${(tokenID !== null && m.authID === tokenID) ? 'right' : ''}`}
+						className={`${(tokenID  && m.authID === tokenID) ? 'right' : ''}`}
 					>
 						<p>Текст {m.text}</p>
 						<p>Дата {m.datedate}</p>
