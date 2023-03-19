@@ -113,7 +113,7 @@ const CommentPage:React.FC = () => {
 					)
 				}
 
-						
+					
 				<div 
 					className='CommentPage__formain' 
 					onClick={handleForMainPage}
@@ -131,7 +131,7 @@ const CommentPage:React.FC = () => {
 				commentsById !== null && commentsById.comments.map((m, k) => 
 					<div 
 						key={k}
-						className={`${m.authID === tokenID ? 'right' : ''}`}
+						className={`${(tokenID !== null && m.authID === tokenID) ? 'right' : ''}`}
 					>
 						<p>Текст {m.text}</p>
 						<p>Дата {m.datedate}</p>
