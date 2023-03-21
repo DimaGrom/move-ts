@@ -27,6 +27,11 @@ const Navbar = () => {
 		setToggle(!toggle)
 	}
 
+	const oneLette = (a: any) => {
+		const b = a.split(/\s+/).join('')
+		return b[0]
+	}
+
 	return (
 		<>
 		<div className='Navbar text-ms'>
@@ -95,8 +100,8 @@ const Navbar = () => {
 											<button 
 												onClick={() => setDeletActive(!deletActive)}
 												className='Navbar__name'
-												style={{color: 'white', marginRight: 20}}
-											>{name}</button>
+												style={{color: 'white', marginRight: 20, textTransform: 'capitalize'}}
+											>{oneLette(name)}</button>
 											<button className='text-ms'>
 												<img 
 													onClick={handleLogOut}

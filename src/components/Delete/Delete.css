@@ -36,13 +36,24 @@
 	}
 }
 
+.Delete__wrape h3 {
+	font-size: 20px;
+}
+
 .Delete__img {
 	position: absolute;
 	top: 0;
-	right: 0;
 	z-index: 50;
 	display: inline-block;
 	cursor: pointer;
+}
+
+.Delete__img.left {
+	left: 0;
+}
+
+.Delete__img.right {
+	right: 0;
 }
 
 .Delete__btn {
@@ -50,4 +61,28 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+}
+
+.Delete__btn button {
+	cursor: pointer;
+	padding: 8px 20px;
+	border-radius: 4px;
+	color: white;
+	opacity: 0.8;
+}
+
+.Delete__btn button.delet {
+	background: #FF6600;
+}
+
+.Delete__btn button.delet:hover {
+	opacity: 1;
+}
+
+.Delete__btn button.consel {
+	background: #5E5373;
+}
+
+.Delete__btn button.consel:hover {
+	opacity: 1;
 }

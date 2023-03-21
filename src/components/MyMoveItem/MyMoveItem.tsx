@@ -68,6 +68,7 @@ const MyMoveItem: React.FC<IProps> = (props) => {
 		}
 	}
 
+
 	return (
 		<div className='MyMoveItem'>
 
@@ -96,7 +97,10 @@ const MyMoveItem: React.FC<IProps> = (props) => {
 				)
 			}
 			
-			<p className='MyMoveItem__title' style={{color: 'black', margin: '10px 0'}}>{title}</p>
+			<p className='MyMoveItem__title' >
+				{title}
+			</p>
+
 			<div className='line-clamp-3'>
 				{
 					descriptions && descriptions.map((m, indx) => (

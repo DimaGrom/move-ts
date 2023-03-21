@@ -6,6 +6,7 @@ import {useAction} from '../../hooks/useActions'
 import {useParams, useNavigate} from  'react-router-dom'
 import {FilmiesStorage} from '../../db/movies-db'
 import emptyLike from '../../icons/heart_01.png'
+import commentImg from '../../icons/comment3.png'
 
 
 const MovePage:React.FC = () => {
@@ -89,6 +90,8 @@ const MovePage:React.FC = () => {
 		}
 	}
 
+	console.log('movemovemovemovemove ', move)
+
 	return (
 		<div className='MovePage'>
 			
@@ -99,10 +102,13 @@ const MovePage:React.FC = () => {
 			</div>
 
 			<div className='MovePage__panale'>
-				<div
-					onClick={handleCommet}
-					className='MovePage__commet'
-				>COMMENT {commentCount}</div>	
+				<div style={{cursor: 'pointer', fontWeight: 700}}>
+					<img
+						onClick={handleCommet}
+						src={commentImg}
+						alt='commentImage'
+					/> {commentCount}
+				</div>
 				{
 					(token && !checkMyMovies) && (
 						<div
@@ -124,6 +130,10 @@ const MovePage:React.FC = () => {
 					)
 				}
 			</div>
+
+			<p style={{fontSize: 18, fontWeight: 700, margin: '10px 0'}}>{move.title}</p>
+
+			<p style={{fontWeight: 700, marginBottom: 5, opacity: 0.8}}>Описание фильма:</p>
 
 			<div className='MovePage__content'>
 				{

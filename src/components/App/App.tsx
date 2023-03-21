@@ -31,8 +31,6 @@ const App: React.FC = () => {
 		console.log('App: React.FC  comments ', comments)
 	})
 
-	console.log('App: React.FC  token ', token)
-
 	const handleDeletUsers = () => {
 		localforage.removeItem('users')
 	}

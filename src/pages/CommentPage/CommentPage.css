@@ -58,6 +58,11 @@
     align-items: center;
 }
 
+.CommentPage__not-comment h1, .CommentPage__not-comment h1 a {
+	font-size: 18px;
+	font-weight: 700;
+}
+
 .CommentPage_a {
 	opacity: 0.5;
 	color: red;
@@ -111,10 +116,30 @@
 .CommentPage__content div {
 	display: flex;
 	flex-direction: column;
-
+	margin: 5px 0;
 }
-
 
 .CommentPage__content div.right {
 	align-items: flex-end;
+}
+
+.CommentPage__content div {
+	border: outset;
+    padding: 0 10px;
+}
+
+.CommentPage__content p.name {
+	font-size: 12px;
+	font-weight: 700;
+	opacity: 0.8;
+}
+
+.CommentPage__content p.date {
+	font-size: 12px;
+	font-weight: 700;
+	opacity: 0.8;
+}
+
+.CommentPage__content p.text {
+	font-size: 14px;
 }

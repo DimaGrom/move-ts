@@ -60,8 +60,6 @@ const CommentPage:React.FC = () => {
 	const handleForMainPage = () => {
 		navigate('/')
 	}
-
-	console.log('CommentPage:React.FC tokenID =========== ', tokenID)
 	
 	return (
 		<div className='CommentPage'>
@@ -133,9 +131,9 @@ const CommentPage:React.FC = () => {
 						key={k}
 						className={`${m.authID === tokenID ? 'right' : ''}`}
 					>
-						<p>Текст {m.text}</p>
-						<p>Дата {m.datedate}</p>
-						<p>Имя {m.name}</p>
+						<p className='name'>{m.name}</p>
+						<p className='date'>{m.datedate}</p>
+						<p className='text'>{m.text}</p>
 					</div>
 				)
 			}

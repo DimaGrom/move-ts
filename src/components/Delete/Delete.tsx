@@ -32,14 +32,20 @@ const Delete: React.FC<IDeletProps> = (props) => {
 				<h3>Удалить Акаунт</h3>
 
 				<div className='Delete__btn'>
-					<button  onClick={handleDeleete}>Удалить</button>
-					<button onClick={() => changeActive(false)}>Отмена</button>
+					<button className='delet'  onClick={handleDeleete}>Удалить</button>
+					<button className='consel' onClick={() => changeActive(false)}>Отмена</button>
 				</div>
 
 				<img
 					src={closeImg}
 					onClick={() => changeActive(false)}
-					className='CommentForm__img'
+					className='Delete__img left'
+					alt='close-image'
+				/>
+				<img
+					src={closeImg}
+					onClick={() => changeActive(false)}
+					className='CommentForm__img right'
 					alt='close-image'
 				/>
 			</div>
@@ -48,13 +54,3 @@ const Delete: React.FC<IDeletProps> = (props) => {
 }
 
 export default Delete
-
-
-// <button onClick={() => changeActive(false)} >X</button>
-
-// <div>
-// 	<button onClick={handleDeleete} >ДА</button>
-// 	<br />
-// 	<button onClick={() => changeActive(false)} >
-// 		НЕТ</button>
-// </div>
