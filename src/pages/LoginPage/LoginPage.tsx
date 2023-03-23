@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import '../../css.css'
+import './LoginPage.css'
 import {useAction} from '../../hooks/useActions'
 import {NavLink, useNavigate} from 'react-router-dom'
 import {useTypedSelector} from '../../hooks/useTypedSelector'
@@ -38,38 +39,31 @@ const LoginPage: React.FC = () => {
 
 	return (
 		<div className='LoginPage'>
-			<h3>LoginPage</h3>
+
 			<form
 				onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault() }
-			>
-				<p>Введите Ваше имя</p>
+			>	
+				<h3>Авторизация</h3>
+				<p>Имя</p>
 				<input
 					value={value}
 					onChange={handleValue}
 					type='text'
 					placeholder='name...'
-					style={{
-				    border: 'solid grey 1px',
-						padding: '4px 10px'
-					}}
 				/>
-				<button
-					onClick={handleLogin}
-					style={{
-						background: 'cyan',
-				    padding: '5px 100px',
-				    marginLeft: '10px',
-					}}
-				>Войти</button>
-				<div>
-					<NavLink className='' to='/registration'>Регистрация</NavLink>
+				<div className='LoginPage__a'>
+					<button
+						onClick={handleLogin}
+					>Войти</button>
+					<NavLink className='' to='/registration'>Регистрация
+					</NavLink>
 				</div>
+				{
+					status === 404 && (
+						<h4>Неверный пароль или имя</h4>
+					)
+				}
 			</form>
-			{
-				status === 404 && (
-					<h3 className='red'>Неверный пароль или имя</h3>
-				)
-			}
 		</div>
 	)
 }

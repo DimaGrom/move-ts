@@ -79,3 +79,7 @@
 .MyMoveItem__icon div {
 	cursor: pointer;
 }
+
+.MyMoveItem__icon img {
+	margin-right: 5px;
+}

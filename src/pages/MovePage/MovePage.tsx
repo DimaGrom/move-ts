@@ -90,8 +90,6 @@ const MovePage:React.FC = () => {
 		}
 	}
 
-	console.log('movemovemovemovemove ', move)
-
 	return (
 		<div className='MovePage'>
 			

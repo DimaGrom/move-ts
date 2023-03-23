@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import '../../css.css'
+import './RegistrationPage.css'
 import {NavLink, useNavigate} from 'react-router-dom'
 import {useAction} from '../../hooks/useActions'
 import localforage from 'localforage'
@@ -10,10 +11,6 @@ const RegistrationPage: React.FC = () => {
 	const [value, setValue] = useState('')
 	const {authRegister, authStatuse} = useAction()
 	const navigate = useNavigate()
-
-	// useEffect(() => {
-	// 	localforage.removeItem('users')
-	// }, [])
 
 	const handleValue = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setValue(e.target.value)
@@ -37,36 +34,28 @@ const RegistrationPage: React.FC = () => {
 	}
 
 	return (
-		<div>
-			<h3>Регистрация</h3>
+		<div className='RegistrationPage'>
 			<form
 				onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault() }
 			>
-				<p>Введите Ваше имя</p>
+				<h3>Регистрация</h3>
+				<p>Имя</p>
 				<input
 					value={value}
 					onChange={handleValue}
 					type='text'
 					placeholder='name...'
-					style={{
-				    border: 'solid grey 1px',
-						padding: '4px 10px'
-					}}
 				/>
-				<button
-					onClick={handleCreateNewUser}
-					style={{
-						background: 'cyan',
-				    padding: '5px 100px',
-				    marginLeft: '10px',
-					}}
-				>Добавить</button>
-				<div>
-					<NavLink className='' to='/login'>Есть акаут?</NavLink>
+				<div className='LoginPage__a'>
+					<button
+						onClick={handleCreateNewUser}
+					>Добавить</button>
+					<NavLink className='' to='/login'>Есть акаут?
+					</NavLink>
 				</div>
 				{
 					status === 404 && (
-						<h3 className='red'>Данно имя занято</h3>
+						<h4 className='red'>Данно имя занято</h4>
 					)
 				}
 			</form>

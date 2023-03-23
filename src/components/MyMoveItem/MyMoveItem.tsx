@@ -5,6 +5,7 @@ import {useNavigate} from 'react-router-dom'
 import deietImg from '../../icons/Button_Delete-01_25095.png'
 import {useAction} from '../../hooks/useActions' 
 import {useTypedSelector} from '../../hooks/useTypedSelector'
+import commentImg from '../../icons/comment3.png'
 
  
 interface IDescriptions {
@@ -68,6 +69,9 @@ const MyMoveItem: React.FC<IProps> = (props) => {
 		}
 	}
 
+	const handleCommet = () => {
+		navigate(`/${id}/comment`)
+	}
 
 	return (
 		<div className='MyMoveItem'>
@@ -85,7 +89,16 @@ const MyMoveItem: React.FC<IProps> = (props) => {
 			{
 				check && (
 					<div className='MyMoveItem__icon'>
-						<div>COMMENT {count}</div>
+						<div 
+							onClick={handleCommet}
+							style={{cursor: 'pointer'}}
+						> 
+							<img 
+								src={commentImg}
+								alt='comentImage'
+							/>
+								{count}
+						</div>
 						<div>
 							<img 
 								onClick={handleDelete}

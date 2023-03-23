@@ -1,0 +1,78 @@
+.LoginPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.LoginPage form {
+	width: 40%;
+	margin: 50px 0;
+	position: relative;
+}
+
+@media (max-width: 880px) {
+	.LoginPage form {
+		width: 50vw;
+	}
+}
+
+@media (max-width: 880px) {
+	.LoginPage form {
+		width: 60vw;
+	}
+}
+
+@media (max-width: 550px) {
+	.LoginPage form {
+		width: 90vw;
+	}
+}
+
+.LoginPage input {
+	width: 100%;
+	border-radius: 5px;
+	border: solid grey 1px;
+	padding: 4px 10px;
+}
+
+.LoginPage h3 {
+	font-size: 20px;
+}
+
+.LoginPage h4 {
+	font-size: 14px;
+	position: absolute;
+	top: 30px;
+    right: 0;
+	color: red;
+}
+
+.LoginPage__a {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 20px 0;
+}
+
+.LoginPage__a button {
+	background: cyan;
+	padding: 5px 20px;
+	border-radius: 4px;
+	opacity: 0.8;
+	transition: 0.4s;
+}
+
+.LoginPage__a button:hover {
+	opacity: 1;
+}
+
+.LoginPage__a a {
+	font-size: 16px;
+	opacity: 0.8;
+}
+
+.LoginPage__a a:hover {
+	opacity: 1;
+	transition: 0.4s;
+}

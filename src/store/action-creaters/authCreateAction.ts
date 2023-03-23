@@ -13,6 +13,14 @@ interface INewUser {
 // Проверяем пользователя на наличие в базе данных и если его нет добавляем в базу данных. 
 export const authRegister = (name: string) => {
 	return async (dispatch: Dispatch<AuthAction>) => {
+		if(name === '' || name === ' ') {
+
+			dispatch({
+				type: AuthActionTypes.AUTH_STATUS,
+				payload: 404
+			})
+			return false
+		}
 		try {	
 			const checkUser = await checkUserByName(name)
 			// Проверяем на наличие 
