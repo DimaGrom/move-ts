@@ -65,20 +65,6 @@ const App: React.FC = () => {
 				</Routes>
 			</Layout>
 
-
-
-			<button 
-				onClick={handleDeletUsers}
-				style={{color: 'black', fontSize: 42}}
-			>Удалить всех пользователей</button>
-
-			<br />
-			<button 
-				onClick={handleDeletComments}
-				style={{color: 'black', fontSize: 42}}
-			>Удалить все комментарии</button>
-
-
 		</div>
 	)
 }
