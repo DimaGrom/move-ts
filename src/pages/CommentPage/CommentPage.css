@@ -76,7 +76,6 @@
 .CommentPage__write-comment, .CommentPage__formain{
 	background:#5E5373;
 	color: white;
-	border: solid #368BD3 1px;
 	width: 80%;
 	height: 40px;
 	display: flex;
