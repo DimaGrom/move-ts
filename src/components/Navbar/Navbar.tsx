@@ -42,6 +42,8 @@ const Navbar = () => {
 
 						<div className='Navbar__logo'>
 							<img
+								onClick={() => navigate('/')}
+								style={{cursor: 'pointer'}}
 								alt='logo'
 								src={cornimg}
 							/>
